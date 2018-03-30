@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CabeceraComponent } from '../cabecera/cabecera.component';
 
 @Component({
   selector: 'app-quien-soy',

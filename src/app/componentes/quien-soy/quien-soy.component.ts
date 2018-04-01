@@ -7,7 +7,7 @@ import { CabeceraComponent } from '../cabecera/cabecera.component';
   styleUrls: ['./quien-soy.component.css']
 })
 export class QuienSoyComponent implements OnInit {
-
+  panelOpenState: boolean = false;
   constructor() { }
 
   ngOnInit() {

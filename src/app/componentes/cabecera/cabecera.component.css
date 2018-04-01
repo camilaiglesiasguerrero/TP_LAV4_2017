@@ -38,3 +38,12 @@ color: white;
 .a{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
+.b {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 9px;
+}
+
+.img{
+    width: 10%;
+}

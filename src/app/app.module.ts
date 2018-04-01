@@ -9,11 +9,10 @@ import { LoginComponent } from './componentes/login/login.component';
 import { HttpModule } from '@angular/http';
 import  {MatExpansionModule } from '@angular/material/expansion';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import { MatDialogModule, MatDialogConfig } from '@angular/material';
 // import { AccordionModule } from 'ngx-bootstrap';
 // agrego las clases para utilizar ruteo
 import { RouterModule, Routes } from '@angular/router';
-
 import { MiHttpService } from './servicios/mi-http/mi-http.service'; 
 import { PaisesService } from './servicios/paises.service'; 
 
@@ -55,6 +54,7 @@ import { MapaDeGoogleComponent } from './componentes/mapa-de-google/mapa-de-goog
 import { AgmCoreModule } from '@agm/core';
 import { InputJugadoresComponent } from './componentes/input-jugadores/input-jugadores.component';
 import { SexoPipe } from './pipes/sexo.pipe';
+import { ReglasDeJuegosComponent } from './componentes/reglas-de-juegos/reglas-de-juegos.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +80,8 @@ import { SexoPipe } from './pipes/sexo.pipe';
     MapaDeGoogleComponent,
     JugadoresListadoComponent,
     InputJugadoresComponent,
-    SexoPipe
+    SexoPipe,
+    ReglasDeJuegosComponent
   ],
   imports: [
     BrowserModule,
@@ -89,6 +90,7 @@ import { SexoPipe } from './pipes/sexo.pipe';
     HttpModule,
     BrowserAnimationsModule,
     MatExpansionModule,
+    MatDialogModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB6f8x4IjRlesQ3oETc6BXYQHVRTOlY3Ys'
     })
@@ -97,6 +99,7 @@ import { SexoPipe } from './pipes/sexo.pipe';
     // RouterModule.forRoot(MiRuteo)
   ],
   providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ReglasDeJuegosComponent] 
 })
 export class AppModule { }

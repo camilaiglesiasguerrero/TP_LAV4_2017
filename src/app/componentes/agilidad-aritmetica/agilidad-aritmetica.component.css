@@ -10,10 +10,10 @@
   }
   
   h1 {
-      color: red;
+      color: rgb(0, 158, 40);
       text-align: center;
       font-size: 50 px;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   }
    h3{
      color: black;
@@ -38,4 +38,72 @@
   .test{
     font-size: 40px; 
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
   }
+.timer{
+  font-size: 40px;
+  color:green;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-right: initial;
+ 
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 80%;
+  bottom: 30px;
+  font-size: 17px;
+}
+#snackbar.Ganador {
+  background-color: #059F2F;
+}
+#snackbar.Perdedor {
+  background-color: #FF0000;
+}
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+.formCenter {
+  margin-left: auto;
+  margin-right: auto;
+  position: middle;
+}
+
+.respuesta{
+  background-color: rgb(180, 178, 178);
+  font-size: 20px; 
+}
+
+.cuenta{
+  font-size: 20px;
+}

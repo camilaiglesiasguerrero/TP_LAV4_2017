@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+ 
 import { AppComponent } from './app.component';
 import { AdivinaElNumeroComponent } from './componentes/adivina-el-numero/adivina-el-numero.component';
 import { ListadoDeResultadosComponent } from './componentes/listado-de-resultados/listado-de-resultados.component';
@@ -55,6 +57,7 @@ import { AgmCoreModule } from '@agm/core';
 import { InputJugadoresComponent } from './componentes/input-jugadores/input-jugadores.component';
 import { SexoPipe } from './pipes/sexo.pipe';
 import { ReglasDeJuegosComponent } from './componentes/reglas-de-juegos/reglas-de-juegos.component';
+import { MezcladorDeColoresComponent } from './Componentes/mezclador-de-colores/mezclador-de-colores.component';
 
 @NgModule({
   declarations: [
@@ -81,11 +84,13 @@ import { ReglasDeJuegosComponent } from './componentes/reglas-de-juegos/reglas-d
     JugadoresListadoComponent,
     InputJugadoresComponent,
     SexoPipe,
-    ReglasDeJuegosComponent
+    ReglasDeJuegosComponent,
+    MezcladorDeColoresComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    CommonModule,
     RuteandoModule,
     HttpModule,
     BrowserAnimationsModule,

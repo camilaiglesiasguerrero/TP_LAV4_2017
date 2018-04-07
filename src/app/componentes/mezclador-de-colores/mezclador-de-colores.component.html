@@ -1,0 +1,15 @@
+<button (click)='generarColor()' >Generar</button>
+<br>
+<button class="mi-btn" [ngStyle]="{'background-color': mezclador.elColorSecreto}">Original</button>
+<button [hidden]='!empiezaElJuego' class='mi-btn' [ngStyle]="{'background-color': mezclador.elColorRespuesta}">Tu Respuesta</button>
+<br>
+<button [hidden]='!empiezaElJuego'(click)='agregar(1)'>Mas rojo</button>
+<button [hidden]='!empiezaElJuego'(click)='agregar(2)'>Mas Verde</button>
+<button [hidden]='!empiezaElJuego'(click)='agregar(3)'>Mas azul</button>
+<br>
+
+<br>
+<button [hidden]='!empiezaElJuego'(click)='verificar()'>Comprobar</button>
+<button [hidden]='!empiezaElJuego'(click)='restaurarValores()'>Reset</button>
+<!--class='mi-btn'
+-->

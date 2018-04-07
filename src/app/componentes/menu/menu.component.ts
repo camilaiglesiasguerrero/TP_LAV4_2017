@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-menu',
@@ -28,6 +29,9 @@ export class MenuComponent implements OnInit {
       case 'AgilidadaMasListado':
           this.router.navigate(['/Juegos/AgilidadaMasListado']);
         break;
+      case 'MezcladorDeColores':
+          this.router.navigate(['/Juegos/MezcladorDeColores']);
+          break;
     }
   }
 

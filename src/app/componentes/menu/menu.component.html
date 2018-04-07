@@ -1,54 +1,19 @@
-<!--div>
-    <button routerLink="/Principal">Principal</button>
-    <button (click)="Juego('Adivina')">Adivina</button>
-    <button (click)="Juego('Agilidad')">Agilidad</button>
-    <button (click)="Juego('AdivinaMasListado')">Adivina+listado</button>
-    <button (click)="Juego('AgilidadaMasListado')">Agilidad+listado</button>  
-    <button routerLink="/error">Error</button>
-  
-</div-->
+<h1 class="lateral Titulo">¡Los mejores juegos!</h1>
 
-<!--nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" routerLink="/Principal">Inicio</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a routerLink="/Juegos">Juegos</a></li>
-        <li><a data-toggle="tooltip" title="Hooray!" (click)="Juego('Adivina')">Adivina</a></li>
-        <li><a  (click)="Juego('Agilidad')">Agilidad</a></li>
-        <li><a  (click)="Juego('AdivinaMasListado')">Adivina+listado</a></li>
-        <li><a  (click)="Juego('AgilidadaMasListado')">Agilidad+listado</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Mis Datos</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
-        </ul>
-    </div>
-  </nav-->
-  <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-                                  
-          </button>
-          <a class="navbar-brand" routerLink="/Principal">Inicio</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a routerLink="/Juegos">Menú de Juegos</a></li>
-                <li><a data-toggle="tooltip" title="Hooray!" (click)="Juego('Adivina')">Adivina</a></li>
-                <li><a  (click)="Juego('Agilidad')">Agilidad</a></li>
-                <li><a  (click)="Juego('AdivinaMasListado')">Adivina+listado</a></li>
-                <li><a  (click)="Juego('AgilidadaMasListado')">Agilidad+listado</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Mis Datos</a></li>
-                  <li><a href="/Login"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
-                </ul>
-        </div>
-      </div>
-    </nav>
-      
-   
+<mat-sidenav-container class="lateral">
+    <mat-sidenav-content  style="font-size:12pt; text-align: center">¡Mezclador de colores!
+        <img class="obj" src="../../../assets/imagenes/mezclador.png">
+        <h2>¿Cuántas gotas de color agregarías para formar el que se te pide?</h2>
+        <button type="button" class="btn btn-dark obj" (click)="Juego('MezcladorDeColores')">Jugar</button> 
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<br>
+
+<mat-sidenav-container class="lateral">
+        <mat-sidenav-content style="font-size:12pt; text-align: center">¡Agilidad aritmética!
+            <img class="obj" src="../../../assets/imagenes/agilidad.png">
+            <h2>¡Debés resolver el cálculo antes de que se termine el tiempo!</h2>
+            <button class="obj" class="btn btn-dark obj" (click)="Juego('Agilidad')">Jugar</button>  
+        </mat-sidenav-content>
+    </mat-sidenav-container>

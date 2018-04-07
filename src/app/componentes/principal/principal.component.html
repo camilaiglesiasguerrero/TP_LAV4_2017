@@ -1,10 +1,63 @@
 <!--<app-cabecera>  </app-cabecera>-->
+<header>
+<div  class= "cabecera">
+    <br><h1>Exprimid<img  class="lateCerebro" src="../../../assets/imagenes/CEREBRO.png" width="50px">r
+       de cerebr<img class="lateCerebro" src="../../../assets/imagenes/CEREBRO.png" width="50px">s    </h1>
+    <!--class="parpadea"-->
+    <h2>Sala de Juegos</h2>
+</div>
+  <br>
+</header>
 
-<div class='a parpadea' style="text-align:center">
-    <h1>INSERT COIN</h1>
-   </div>
-  
 
+<body>
+
+<div class= "container-fluid2"> </div>
+<div id="contenedor">
+  <div id="lateral">
+      <app-menu></app-menu>
+  </div>
+    
+    <div id="principal">
+    
+    <mat-card>
+        <mat-card-content>
+          <mat-tab-group class="demo-tab-group bg-2">
+            <mat-tab label="Iniciar sesión">
+              <div class="demo-tab-content">
+                  <app-login></app-login>
+              </div>
+            </mat-tab>
+            <mat-tab label="Registrarme">
+              <div class="demo-tab-content">
+                <app-registro></app-registro>
+              </div>  
+            </mat-tab>
+            <mat-tab label="Jugar como invitado">
+                <div class="demo-tab-content">
+                  <br>
+              Tené en cuenta que no vas a poder jugar a todos los juegos! Tampoco vas a poder llevar tu ranking en los juegos. 
+              <br>
+              <br>¿Todavía querés jugar como invitado? 
+              <br>
+              <br>
+              <button type="button" class="btn btn-success"style="width: 20%" (click)="irA('iniciarSesion')">No, iniciar sesión</button>
+              <button type="button" class="btn btn-primary"style="width: 20%" (click)="irA('registrarme')">Registrarme</button>   
+              <button type="button" class="btn btn-danger" style="width: 20%" (click)="irA('jugarInvitado')">Sí</button>
+              
+              </div>
+            </mat-tab>
+            
+          </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+</div></div>
+</body>
+<!--
+  <div style="margin-left:25%;padding:1px;height:1000px;" class='container'>
+    
+  </div>
+</body>
  
 <div class="container" >
    
@@ -79,3 +132,4 @@
         
       </ul>
 </div>
+-->

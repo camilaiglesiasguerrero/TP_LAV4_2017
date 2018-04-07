@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
- 
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { AppComponent } from './app.component';
 import { AdivinaElNumeroComponent } from './componentes/adivina-el-numero/adivina-el-numero.component';
 import { ListadoDeResultadosComponent } from './componentes/listado-de-resultados/listado-de-resultados.component';
@@ -91,6 +92,8 @@ import { MezcladorDeColoresComponent } from './Componentes/mezclador-de-colores/
     BrowserModule,
     FormsModule,
     CommonModule,
+    MatTabsModule,
+    MatSidenavModule,
     RuteandoModule,
     HttpModule,
     BrowserAnimationsModule,

@@ -1,0 +1,28 @@
+.lateral{
+    background-color: #FF8021;
+    margin-left: auto;
+    margin-right:auto ;
+    border-color: black;
+    border-style: solid;
+    font-family: 'Pixabubble';
+}
+.Titulo{
+    background-color: #D95C00;
+    font-family: 'Pixabubble';
+}
+.obj{
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+h1{
+    font-family: 'Pixabubble';
+    font-size: 14pt;
+    color: black;
+}
+h2{
+    font-family: 'Pixabubble';
+    font-size: 9pt;
+    text-align: center;
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {MatTabsModule} from '@angular/material/tabs';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-principal',
@@ -11,11 +12,27 @@ export class PrincipalComponent implements OnInit {
     isFirstOpen: true,
     isFirstDisabled: false
   };
-  constructor() {  }
+  constructor(private route: ActivatedRoute,
+    private router: Router) {  }
 
   ngOnInit() {
   }
 
- 
+  irA(donde: string)
+  {
+    console.info("estoy en ir a y quiero ir a " + donde);
+    switch(donde)
+    {
+      case 'iniciarSesion':
+          this.router.navigate(['/LogIn']);
+        break;
+      case 'registrarme':
+        this.router.navigate(['/Registro']);
+        break;
+      case 'jugarInvitado':
+        this.router.navigate(['/Invitado']);        
+        break;
+    }
+  }
 
 }

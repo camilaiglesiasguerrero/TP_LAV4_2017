@@ -44,7 +44,18 @@ export class MezcladorDeColores {
         {
             this.blueRespuesta+=17;
         }
-
+        else if(botonApretado == 4 && this.redRespuesta >= 0) 
+        {
+            this.redRespuesta-= 17;
+        }
+        else if(botonApretado == 5 && this.greenRespuesta >= 0)
+        {
+            this.greenRespuesta-=17;
+        }
+        else if(botonApretado == 6 && this.blueRespuesta >= 0)
+        {
+            this.blueRespuesta-=17;
+        }
         this.elColorRespuesta = '#' + this.fill(this.redRespuesta.toString(16)) + this.fill(this.greenRespuesta.toString(16)) + this.fill(this.blueRespuesta.toString(16));
         console.info('R:' + this.redRespuesta + '; G: ' + this.greenRespuesta + '; B:' + this.blueRespuesta);
     }

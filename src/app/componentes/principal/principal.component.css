@@ -13,35 +13,178 @@ height: 70px;
     }
 
     .text{
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-family: 'beyond_the_mountains';
     }
     
-    .parpadea {
+    .lateCerebro
+    {
+      animation-name: lateCerebro;
+        animation-duration: 20s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      
+        -webkit-animation-name:lateCerebro;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+    }
+
+    
+    @-moz-keyframes lateCerebro{  
+      0% { transform: scale3d(1,1,1); }
+      50% { transform: scale3d(0.1,0.1,0.1); }
+      100% { transform: scale3d(1,1,1); }
+    }
+    
+    @-webkit-keyframes lateCerebro {  
+      0% { transform: scale3d(1,1,1); }
+      50% { transform: scale3d(0.1,0.1,0.1); }
+      100% { transform: scale3d(1,1,1); }
+    }
+    
+    @keyframes lateCerebro {  
+      0% { transform: scale3d(1,1,1); }
+      50% { transform: scale3d(0.75,0.75,0.75); }
+      100% { transform: scale3d(1,1,1); }
+    }
+    .parpadea:hover {
         animation-name: parpadeo;
-        animation-duration: 3s;
+        animation-duration: 20s;
         animation-timing-function: linear;
         animation-iteration-count: infinite;
       
         -webkit-animation-name:parpadeo;
-        -webkit-animation-duration: 1s;
+        -webkit-animation-duration: 2s;
         -webkit-animation-timing-function: linear;
         -webkit-animation-iteration-count: infinite;
       }
       
       @-moz-keyframes parpadeo{  
-        0% { opacity: 1.0; }
-        50% { opacity: 0.0; }
-        100% { opacity: 1.0; }
+        0% { transform: scale3d(1,1,1); }
+        50% { transform: scaleX(0.1); }
+        75% { transform: scaley(0.2);}
+        100% { transform: scale3d(1,1,1); }
       }
       
       @-webkit-keyframes parpadeo {  
-        0% { opacity: 1.0; }
-        50% { opacity: 0.0; }
-         100% { opacity: 1.0; }
+        0% { transform: scale3d(1,1,1); }
+        50% { transform: scaleX(0.1); }
+        75% { transform: scaley(0.2);}
+        100% { transform: scale3d(1,1,1); }
       }
       
       @keyframes parpadeo {  
-        0% { opacity: 1.0; }
-         50% { opacity: 0.0; }
-        100% { opacity: 1.0; }
+        0% { transform: scale3d(1,1,1); }
+        50% { transform: scaleX(0.1); }
+        75% { transform: scaley(0.2);}
+        100% { transform: scale3d(1,1,1); }
       }
+
+      h1{
+        font-family: 'beyond_the_mountains';
+        font-size: 40pt;
+      }
+      h2{
+        font-family: 'beyond_the_mountains';
+        font-size: 15pt;
+      }
+      
+.cabecera{
+  /*background-image: url('../../../assets/imagenes/casinos-online.jpg');*/
+  text-align: center;
+
+}
+
+header{
+  background: #22735C;
+  color:whitesmoke;
+}
+
+
+.demo-tab-group {
+  border: 1px solid #e8e8e8;
+}
+
+.demo-tab-content {
+  padding: 16px;
+  background: #9DE1CE;
+  color:black;
+}
+
+body {
+  font-size: 16pt;
+ font-family: 'olivier_demo';
+/*line-height: 1.8;*/
+ color: whitesmoke;
+  margin: 0;
+}
+
+
+p {font-size: 16px;}
+.margin {margin-bottom: 45px;}
+
+.bg-1 { 
+ background-color: #22735C; /* #00705ae5; /* Green */
+ color: #ffffff;
+}
+.bg-2 { 
+ background-color: #4d4b4b; /* Dark Blue */
+ color: #ffffff;
+}
+.bg-3 { 
+ background-color:#ffffff79; /* White */
+ color: #555555;
+}
+.bg-4 { 
+ background-color: #2f2f2f; /* Black Gray */
+ color: #fff;
+}
+.container-fluid {
+ padding-top: 70px;
+ padding-bottom: 70px;
+}
+
+.container-fluid2{
+ padding-top: 10px;
+ padding-bottom: 10px;
+}
+.navbar {
+ padding-top: 15px;
+ padding-bottom: 15px;
+ border: 0;
+ border-radius: 0;
+ margin-bottom: 0;
+ font-size: 12px;
+ letter-spacing: 5px;
+}
+.navbar-nav  li a:hover {
+ color: #1abc9c !important;
+}
+
+.panel1{
+ background-color : #75EA52;
+}
+
+.panel2{
+ background-color:  #FF8021;
+}
+
+
+#contenedor{
+  text-align: left;
+  /*width: 750px;*/
+  margin: auto;}
+  
+  #lateral{
+  width: 180px;  /*Este será el ancho que tendrá tu columna*/
+  /*background-color: #CCCCCC;  /*Aquí pon el color del fondo que quieras para este lateral*/
+  float:left; /*Aqui determinas de lado quieres quede esta "columna" */
+  }
+  
+  #principal{
+  margin-left:200px; /*Este margen hace que no se encime el contenido en tu menúlateral, es     importante que pongas un pocos pixeles más que el ancho  de tu columna lateral*/
+  background-color: #FFFFFF;
+  font-family: 'Pixabubble';
+  font-size: 20px;
+  /*border-left:#000000 4px solid; ponemos un dorde para que se vea bonito*/
+  }

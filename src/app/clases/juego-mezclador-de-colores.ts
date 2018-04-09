@@ -9,6 +9,13 @@ export class MezcladorDeColores {
     blueRespuesta: number;
     elColorRespuesta: string;
     
+    redTopeSuma: boolean = false;
+    redTopeResta: boolean = true;
+    greenTopeSuma: boolean = false;
+    greenTopeResta: boolean = true;
+    blueTopeSuma: boolean = false;
+    blueTopeResta: boolean = true;
+
     gano: boolean = false;
 
     constructor(){
@@ -17,8 +24,8 @@ export class MezcladorDeColores {
     generarColor(){
         //hexString = yourNumber.toString(16);
         this.restaurarValores(1);
-        
-        while(this.redSecreto % 17 != 0 || this.greenSecreto % 17 != 0 || this.blueSecreto % 17 != 0)
+            
+        while(this.redSecreto % 51 != 0 || this.greenSecreto % 51 != 0 || this.blueSecreto % 51 != 0)
         {
             this.redSecreto = (Math.floor((Math.random() * 255) + 1));
             this.greenSecreto = (Math.floor((Math.random() * 255) + 1));
@@ -26,38 +33,46 @@ export class MezcladorDeColores {
         }
  
         this.elColorSecreto = '#' + this.redSecreto.toString(16) + this.greenSecreto.toString(16) + this.blueSecreto.toString(16);
-        console.info('R:' + this.redSecreto + '; G: ' + this.greenSecreto + '; B:' + this.blueSecreto);
-
-        //this.gano = false;
+        console.info('EL COLOR SECRETO ES R:' + this.redSecreto + '; G: ' + this.greenSecreto + '; B:' + this.blueSecreto);
     }
 
     Agregar(botonApretado: number){
-        if(botonApretado == 1 && this.redRespuesta <= 255) 
+        switch(botonApretado)
         {
-            this.redRespuesta+= 17;
+            case 1:
+                this.redRespuesta += this.redRespuesta < 255 ?  51 : 0;
+                this.redTopeResta = this.redRespuesta == 0 ? true : false;
+                this.redTopeSuma = this.redRespuesta == 255 ? true : false;
+                break;
+            case 2:
+                this.greenRespuesta += this.greenRespuesta < 255 ? 51 : 0;
+                this.greenTopeResta = this.greenRespuesta == 0 ? true : false;
+                this.greenTopeSuma = this.greenRespuesta == 255 ? true : false;
+                break;
+            case 3:
+                this.blueRespuesta += this.blueRespuesta < 255 ? 51 : 0;
+                this.blueTopeResta = this.blueRespuesta == 0 ? true : false;
+                this.blueTopeSuma = this.blueRespuesta == 255 ? true : false;
+                break;
+            case 4: 
+                this.redRespuesta -= this.redRespuesta > 0 ? 51 : 0;  
+                this.redTopeResta = this.redRespuesta == 0 ? true : false;
+                this.redTopeSuma = this.redRespuesta == 255 ? true : false;
+                break;
+            case 5:
+                this.greenRespuesta -= this.greenRespuesta > 0 ? 51 : 0;
+                this.greenTopeResta = this.greenRespuesta == 0 ? true : false;
+                this.greenTopeSuma = this.greenRespuesta == 255 ? true : false;
+                break;
+            case 6:
+                this.blueRespuesta -= this.blueRespuesta > 0 ? 51 : 0;
+                this.blueTopeResta = this.blueRespuesta == 0 ? true : false;
+                this.blueTopeSuma = this.blueRespuesta == 255 ? true : false;
+                break;
         }
-        else if(botonApretado == 2 && this.greenRespuesta <= 255)
-        {
-            this.greenRespuesta+=17;
-        }
-        else if(botonApretado == 3 && this.blueRespuesta <= 255)
-        {
-            this.blueRespuesta+=17;
-        }
-        else if(botonApretado == 4 && this.redRespuesta >= 0) 
-        {
-            this.redRespuesta-= 17;
-        }
-        else if(botonApretado == 5 && this.greenRespuesta >= 0)
-        {
-            this.greenRespuesta-=17;
-        }
-        else if(botonApretado == 6 && this.blueRespuesta >= 0)
-        {
-            this.blueRespuesta-=17;
-        }
+        
         this.elColorRespuesta = '#' + this.fill(this.redRespuesta.toString(16)) + this.fill(this.greenRespuesta.toString(16)) + this.fill(this.blueRespuesta.toString(16));
-        console.info('R:' + this.redRespuesta + '; G: ' + this.greenRespuesta + '; B:' + this.blueRespuesta);
+        //console.info('R:' + this.redRespuesta + '; G: ' + this.greenRespuesta + '; B:' + this.blueRespuesta);
     }
 
     fill(n) {
@@ -72,23 +87,24 @@ export class MezcladorDeColores {
     }
 
     restaurarValores(cuales:number){
-        if(cuales = 1) //juego nuevo
+        if(cuales == 1) //juego nuevo
         {
-            this.redSecreto = 13;
-            this.greenSecreto = 13;
-            this.blueSecreto =  13;
+            this.redSecreto = 5;
+            this.greenSecreto = 5;
+            this.blueSecreto =  5;
+        }
+        
+            this.blueTopeResta = true;
+            this.redTopeResta = true;    
+            this.greenTopeResta = true;
+            this.blueTopeSuma = false;
+            this.redTopeSuma = false;    
+            this.greenTopeSuma = false;
             this.redRespuesta = 0;
             this.greenRespuesta = 0;
             this.blueRespuesta = 0;
             this.elColorRespuesta = '#000000';
-        }
-        else if(cuales = 2)//resetea valores del juegador
-        {
-            this.redRespuesta = 0;
-            this.greenRespuesta = 0;
-            this.blueRespuesta = 0;
-            this.elColorRespuesta = '#000000';
-        }
+        
 
     }
 }

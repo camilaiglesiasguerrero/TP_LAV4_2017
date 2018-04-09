@@ -1,18 +1,61 @@
-<button (click)='generarColor()' >Generar</button>
-<br>
-<button class="mi-btn" [ngStyle]="{'background-color': mezclador.elColorSecreto}">Original</button>
-<button [hidden]='!empiezaElJuego' class='mi-btn' [ngStyle]="{'background-color': mezclador.elColorRespuesta}">Tu Respuesta</button>
-<br>
-<button [hidden]='!empiezaElJuego'(click)='agregar(1)'>Mas rojo</button>
-<button [hidden]='!empiezaElJuego'(click)='agregar(2)'>Mas Verde</button>
-<button [hidden]='!empiezaElJuego'(click)='agregar(3)'>Mas azul</button><br>
-<button [hidden]='!empiezaElJuego'(click)='agregar(4)'>Menos rojo</button>
-<button [hidden]='!empiezaElJuego'(click)='agregar(5)'>Menos Verde</button>
-<button [hidden]='!empiezaElJuego'(click)='agregar(6)'>Menos azul</button>
+<div style="background-color:#232929;" class="parpadeo titulo">
+   <img src="../../../assets/imagenes/mezclador.gif" class='img izq'>   
+        Mezclador de Colores
+   <img src="../../../assets/imagenes/mezclador.gif" class='img der'>
+</div>
 <br>
 
-<br>
-<button [hidden]='!empiezaElJuego'(click)='verificar()'>Comprobar</button>
-<button [hidden]='!empiezaElJuego'(click)='restaurarValores()'>Reset</button>
-<!--class='mi-btn'
--->
+<div class='container' [hidden]='verifica'>
+    <div class="cabecera"> 
+        <button type="button" class="mi-btn btn-success" (click)='generarColor()'>Comenzar</button>
+        <input type="text" class="tiempo" readonly value='00:00' [hidden]='!empiezaElJuego'>    
+    </div>
+
+  <div class="menu">
+     <div [hidden]='!empiezaElJuego' style="color:whitesmoke" class="cuadro" [ngStyle]="{'background-color': mezclador.elColorSecreto}">Original</div>
+  </div>
+  <div class="menu">
+        <div [hidden]='!empiezaElJuego' style="color:whitesmoke" class='cuadro' [ngStyle]="{'background-color': mezclador.elColorRespuesta}">Tu Respuesta</div>
+    </div>
+
+<div class="main">
+    <div>
+        <div class="menu">
+            <button class="signo" style="background-color:red" [hidden]='!empiezaElJuego || mezclador.redTopeSuma'(click)='agregar(1)'>+</button>
+            <button class="signo" disabled [hidden]='!empiezaElJuego || !mezclador.redTopeSuma'>+</button>
+            <br>
+            <button class="signo" style="background-color:red" [hidden]='!empiezaElJuego || mezclador.redTopeResta'(click)='agregar(4)'>-</button>
+            <button class="signo" disabled [hidden]='!empiezaElJuego || !mezclador.redTopeResta'>-</button>
+        </div>
+        <div class="menu">
+            <button class="signo" style="background-color:greenyellow" [hidden]='!empiezaElJuego || mezclador.greenTopeSuma'(click)='agregar(2)'>+</button>
+            <button class="signo" disabled [hidden]='!empiezaElJuego || !mezclador.greenTopeSuma'>+</button>
+            <br>
+            <button class="signo" style="background-color:greenyellow" [hidden]='!empiezaElJuego || mezclador.greenTopeResta'(click)='agregar(5)'>-</button>
+            <button class="signo" disabled [hidden]='!empiezaElJuego || !mezclador.greenTopeResta'>-</button>
+        </div>
+        <div class="menu">
+            <button class="signo"  style="background-color:blue" [hidden]='!empiezaElJuego || mezclador.blueTopeSuma'(click)='agregar(3)'>+</button>
+            <button class="signo" disabled [hidden]='!empiezaElJuego || !mezclador.blueTopeSuma'>+</button>
+            <br>
+            <button class="signo" style="background-color:blue"[hidden]='!empiezaElJuego || mezclador.blueTopeResta'(click)='agregar(6)'>-</button>    
+            <button class="signo" disabled [hidden]='!empiezaElJuego || !mezclador.blueTopeResta'>-</button>
+        </div>
+        
+            <br>
+            <button type="button" class="mi-btn btn-success" [hidden]='!empiezaElJuego'(click)='verificar()'>Comprobar</button>
+            <br>
+            <button type="button" class="mi-btn btn-warning" [hidden]='!empiezaElJuego'(click)='restaurarValores()'>Reset</button>
+        
+    </div>
+</div>
+<button type="button" class="btn btn-primary" mat-button alertdialog (click)="openDialog()">¿Cómo se juega?</button>
+</div>
+
+
+<div [hidden]='!verifica' class='container'>
+    <div [ngStyle]="{'color': color}" class="resultado">{{resultado}}</div>
+    <div>
+            <p-slider class="p-slider-component" [range]="true" [(ngModel)]="rangeValues"></p-slider>
+    </div>
+</div>

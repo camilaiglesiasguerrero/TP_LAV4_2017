@@ -1,24 +1,30 @@
+//MODULES
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {SliderModule} from 'primeng/slider';
+import { HttpModule } from '@angular/http';
+import  {MatExpansionModule } from '@angular/material/expansion';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatDialogModule, MatDialogConfig, MatIconModule } from '@angular/material';
+// import { AccordionModule } from 'ngx-bootstrap';
+// import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+//COMPONENTES
 import { AppComponent } from './app.component';
 import { AdivinaElNumeroComponent } from './componentes/adivina-el-numero/adivina-el-numero.component';
 import { ListadoDeResultadosComponent } from './componentes/listado-de-resultados/listado-de-resultados.component';
 import { LoginComponent } from './componentes/login/login.component';
-// import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { HttpModule } from '@angular/http';
-import  {MatExpansionModule } from '@angular/material/expansion';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatDialogModule, MatDialogConfig } from '@angular/material';
-// import { AccordionModule } from 'ngx-bootstrap';
+
 // agrego las clases para utilizar ruteo
 import { RouterModule, Routes } from '@angular/router';
+
+//SERVICIOS
 import { MiHttpService } from './servicios/mi-http/mi-http.service'; 
 import { PaisesService } from './servicios/paises.service'; 
-
 import { JugadoresService } from './servicios/jugadores.service'; 
 import{ ArchivosJugadoresService} from './servicios/archivos-jugadores.service'; 
 import { ErrorComponent } from './componentes/error/error.component';
@@ -29,19 +35,7 @@ import { AdivinaMasListadoComponent } from './componentes/adivina-mas-listado/ad
 import { AgilidadMasListadoComponent } from './componentes/agilidad-mas-listado/agilidad-mas-listado.component';
 import { RuteandoModule } from './ruteando/ruteando.module';
 import { ListadoComponent } from './componentes/listado/listado.component';
-// declaro donde quiero que se dirija
-/*
-const MiRuteo = [{path: 'error' , component: ErrorComponent},
-{path: 'Login' , component: LoginComponent},
-{path: 'Principal' , component: PrincipalComponent , pathMatch: 'full'},
-{path: 'Adivina' , component: AdivinaElNumeroComponent},
-{path: 'AdivinaMasListado' , component: AdivinaMasListadoComponent},
-{path: 'AgilidadaMasListado' , component: AgilidadMasListadoComponent},
-{path: 'Agilidad' , component: AgilidadAritmeticaComponent},
-{path: '' , component: LoginComponent , pathMatch: 'full'},
 
-{path: '**' , component: ErrorComponent} ];
-*/
 import { JugadoresListadoComponent } from './componentes/jugadores-listado/jugadores-listado.component';
 
 import { JuegoServiceService } from './servicios/juego-service.service';
@@ -59,6 +53,7 @@ import { InputJugadoresComponent } from './componentes/input-jugadores/input-jug
 import { SexoPipe } from './pipes/sexo.pipe';
 import { ReglasDeJuegosComponent } from './componentes/reglas-de-juegos/reglas-de-juegos.component';
 import { MezcladorDeColoresComponent } from './Componentes/mezclador-de-colores/mezclador-de-colores.component';
+import { MezcladorReglasComponent } from './Componentes/mezclador-reglas/mezclador-reglas.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +81,8 @@ import { MezcladorDeColoresComponent } from './Componentes/mezclador-de-colores/
     InputJugadoresComponent,
     SexoPipe,
     ReglasDeJuegosComponent,
-    MezcladorDeColoresComponent
+    MezcladorDeColoresComponent,
+    MezcladorReglasComponent
   ],
   imports: [
     BrowserModule,
@@ -94,6 +90,8 @@ import { MezcladorDeColoresComponent } from './Componentes/mezclador-de-colores/
     CommonModule,
     MatTabsModule,
     MatSidenavModule,
+    MatIconModule,
+    SliderModule,
     RuteandoModule,
     HttpModule,
     BrowserAnimationsModule,
@@ -108,6 +106,6 @@ import { MezcladorDeColoresComponent } from './Componentes/mezclador-de-colores/
   ],
   providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService],
   bootstrap: [AppComponent],
-  entryComponents: [ReglasDeJuegosComponent] 
+  entryComponents: [ReglasDeJuegosComponent, MezcladorReglasComponent] 
 })
 export class AppModule { }

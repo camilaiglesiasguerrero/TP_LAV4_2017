@@ -1,11 +1,13 @@
-h1{
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  text-align: center;
-  color: rgb(1, 59, 30);
-}
-
 h3{
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-align: center;
-  color: rgba(0, 128, 0, 0.671);
+  font-family: 'beyond_the_mountains';
 }
+.bg-1 { 
+  background-color: #22735C; /* #00705ae5; /* Green */
+  color: #ffffff;
+ }
+ 
+.container-fluid {
+  padding-top: 70px;
+  padding-bottom: 70px;
+ }

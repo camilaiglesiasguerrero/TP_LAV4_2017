@@ -1,5 +1,117 @@
 .mi-btn{
-    color: white;
-    width: 200px;
-    height: 200px;
+    width: 500px;
+    height: 70px;
+}
+
+.tiempo{
+  font-size: 36px;
+  font-family: 'beyond_the_mountains';
+  text-align: center;
+  background-color: grey;
+  width: 300px;
+  height: 60px;
+  float: right;
+}
+.cuadro{
+  width: 250px;
+  height: 250px;
+  font-family: 'olivier_demo';
+  font-size: 14pt;
+  border: black;
+  border-style: solid;
+}
+
+.img { 
+    width: 15%;
+    height: 15%;
+   }
+
+     
+.container-fluid {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-left: 10px;
+   }
+
+.obj{
+    width: 10%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .titulo{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'beyond_the_mountains';
+    font-weight: bold;
+    font-size: 60px;
+    text-align: center;
+  }
+.parpadeo {
+    animation-name: parpadeo;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  
+    -webkit-animation-name:parpadeo;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+  }
+  
+  @-moz-keyframes parpadeo{  
+    0% { color: red; }
+    50% { color: greenyellow; }
+    75% { color: turquoise; }
+    100% { color: red; }
+  }
+  
+  @-webkit-keyframes parpadeo {  
+    0% { color: red; }
+    50% { color: green; }
+    75% { color: blue; }
+    100% { color: red; }
+  }
+  
+  @keyframes parpadeo {  
+    0% { color: red; }
+    50% { color: green; }
+    75% { color: blue; }
+    100% { color: red; }
+  }
+
+button{
+  font-family: 'olivier_demo';
+  font-size: 18pt;
+}
+
+.signo{
+  width: 50%;
+  height: 50%;
+  border: grey;
+  border-style: solid;
+}
+
+.cabecera {
+  padding: 15px;
+  
+}
+.menu {
+  width: 27%;
+  float: left;
+  padding: 15px;
+  
+}
+.main {
+  width: 46%;
+  float: left;
+  padding: 15px; 
+  
+}
+
+.resultado{
+  font-family: 'beyond_the_mountains';
+    font-weight: bold;
+    font-size: 30px;
 }

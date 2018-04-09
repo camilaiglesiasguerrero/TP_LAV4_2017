@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTabsModule} from '@angular/material/tabs';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import {  MatIconModule } from '@angular/material';
 
 @Component({
   selector: 'app-principal',

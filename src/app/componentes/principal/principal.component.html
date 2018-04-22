@@ -19,11 +19,11 @@
       <app-menu></app-menu>
   </div>
     
-    <div id="principal">
-        
+<div class="col-sm-7" id="principal">
+
     <mat-card>
         <mat-card-content>
-          <mat-tab-group class="demo-tab-group bg-2">
+          <mat-tab-group  [selectedIndex]="selectedIndex" class="demo-tab-group bg-2">
             <mat-tab label="Iniciar sesión">
               <div class="demo-tab-content">
                   
@@ -38,7 +38,7 @@
             <mat-tab label="Jugar como invitado">
                 <div class="demo-tab-content">
                   <br>
-              Tené en cuenta que no vas a poder jugar a todos los juegos! Tampoco vas a poder llevar tu ranking en los juegos. 
+              Tené en cuenta que no vas a poder jugar a todos los juegos! Tampoco vas a poder llevar tu ranking. 
               <br>
               <br>¿Todavía querés jugar como invitado? 
               <br>
@@ -55,6 +55,8 @@
       </mat-card>
 </div></div>
 </body>
+
+
 <!--
   <div style="margin-left:25%;padding:1px;height:1000px;" class='container'>
     

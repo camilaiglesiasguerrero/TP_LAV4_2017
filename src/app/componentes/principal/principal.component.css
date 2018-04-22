@@ -107,7 +107,7 @@ header{
 
 .demo-tab-content {
   padding: 16px;
-  background: #9DE1CE;
+  background: rgb(45, 153, 123);
   color:black;
 }
 
@@ -180,8 +180,8 @@ p {font-size: 16px;}
   /*background-color: #CCCCCC;  /*Aquí pon el color del fondo que quieras para este lateral*/
   float:left; /*Aqui determinas de lado quieres quede esta "columna" */
   }
-  
-  #principal{
+
+    #principal{
   margin-left:200px; /*Este margen hace que no se encime el contenido en tu menúlateral, es     importante que pongas un pocos pixeles más que el ancho  de tu columna lateral*/
   background-color: #FFFFFF;
   font-family: 'Pixabubble';

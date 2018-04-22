@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import {SliderModule} from 'primeng/slider';
+
 import { HttpModule } from '@angular/http';
 import  {MatExpansionModule } from '@angular/material/expansion';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -91,7 +91,6 @@ import { MezcladorReglasComponent } from './Componentes/mezclador-reglas/mezclad
     MatTabsModule,
     MatSidenavModule,
     MatIconModule,
-    SliderModule,
     RuteandoModule,
     HttpModule,
     BrowserAnimationsModule,

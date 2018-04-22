@@ -9,7 +9,9 @@ import {  MatIconModule } from '@angular/material';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent implements OnInit {
- public status: any = {
+  selectedIndex:number=0;
+
+  public status: any = {
     isFirstOpen: true,
     isFirstDisabled: false
   };
@@ -21,14 +23,13 @@ export class PrincipalComponent implements OnInit {
 
   irA(donde: string)
   {
-    console.info("estoy en ir a y quiero ir a " + donde);
     switch(donde)
     {
       case 'iniciarSesion':
-          this.router.navigate(['/LogIn']);
+        this.selectedIndex=0;
         break;
       case 'registrarme':
-        this.router.navigate(['/Registro']);
+        this.selectedIndex=1;
         break;
       case 'jugarInvitado':
         this.router.navigate(['/Invitado']);        

@@ -12,6 +12,10 @@
   height: 60px;
   float: right;
 }
+.mili
+{
+  font-size: 25px;
+}
 .cuadro{
   width: 250px;
   height: 250px;
@@ -114,4 +118,69 @@ button{
   font-family: 'beyond_the_mountains';
     font-weight: bold;
     font-size: 30px;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+.rojoSec{
+  background:#FF0000; /* Grey background */
+}
+.verdeSec{
+  background: #00FF00; /* Grey background */
+}
+
+.azulSec{
+  background: #0000ff;
+}
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: black; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+ /* background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+.txt{
+  font-family: 'Pixabubble';
+  color:black;
+  font-size: 20px;
+}
+.lbl{
+  font-family: 'beyond_the_mountains';
+  font-weight: bold;
+  color:black;
+  font-size: 20px;
+}
+.recuadro{
+  width: 50px;
+  height: 50px; 
+  border: black;
+  border-style: solid;
 }

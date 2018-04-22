@@ -14,12 +14,18 @@ export class RegistroComponent implements OnInit {
   formRegistro:FormGroup=this.miConstructor.group({
     usuario:this.email
   });*/
-  constructor( ) { }
+  constructor(private route: ActivatedRoute,
+    private router: Router) { }
   
 
   ngOnInit() {
-     
-     
+         
+  }
+  Entrar(){
+    //validar que no exista en BD
+    //Loguearlo
+    //redirigirlo logueado
+    this.router.navigate(['/Juegos']);
   }
 
 }

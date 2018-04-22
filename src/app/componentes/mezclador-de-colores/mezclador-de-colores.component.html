@@ -8,7 +8,7 @@
 <div class='container' [hidden]='verifica'>
     <div class="cabecera"> 
         <button type="button" class="mi-btn btn-success" (click)='generarColor()'>Comenzar</button>
-        <input type="text" class="tiempo" readonly value='00:00' [hidden]='!empiezaElJuego'>    
+        <p  class="tiempo" readonly [hidden]='!empiezaElJuego'>{{cronometro}}<i class="mili">{{cronoMili}}</i></p> 
     </div>
 
   <div class="menu">
@@ -55,7 +55,32 @@
 
 <div [hidden]='!verifica' class='container'>
     <div [ngStyle]="{'color': color}" class="resultado">{{resultado}}</div>
-    <div>
-            <p-slider class="p-slider-component" [range]="true" [(ngModel)]="rangeValues"></p-slider>
+   <br>
+   <div class="slidecontainer">
+    <div class="lbl">Original</div>
+    <div class="row">
+        <br>
+            <div class="row">
+                   <div class="col-sm-4 txt" >Rojo <input type="range" min="1" max="255" value={{mezclador.redSecreto}} class="slider rojoSec" disabled id="rojoSec"></div>
+                    <div class="col-sm-4 txt" >Verde <input type="range" min="1" max="255" value={{mezclador.greenSecreto}} class="slider verdeSec" disabled id="verdeSec"></div>
+                    <div class="col-sm-4 txt" >Azul <input type="range" min="1" max="255" value={{mezclador.blueSecreto}} class="slider azulSec" disabled id="azulSec"></div> 
+            </div>  
+            <div class="col-sm-2"> </div>
+            <div class="recuadro" [ngStyle]="{'background-color': mezclador.elColorSecreto}"></div>
     </div>
+    <br>
+    <div class="lbl">Respuesta</div>
+    <div class="row">
+        <br>
+            <div class="row">
+                   <div class="col-sm-4 txt" >Rojo <input type="range" min="1" max="255" value={{mezclador.redRespuesta}} class="slider rojoSec" disabled id="rojoSec"></div> 
+                   <div class="col-sm-4 txt" >Verde <input type="range" min="1" max="255" value={{mezclador.greenRespuesta}} class="slider verdeSec" disabled id="verdeSec"></div>
+                    <div class="col-sm-4 txt" >Azul <input type="range" min="1" max="255" value={{mezclador.blueRespuesta}} class="slider azulSec" disabled id="azulSec"></div>                    
+            </div>             
+            <div class="col-sm-2"></div>
+            <div class="recuadro" [ngStyle]="{'background-color': mezclador.elColorRespuesta}"></div>
+    </div> 
+    <br><br>
+    <button type="button" class="mi-btn btn-success" (click)='generarColor()'>Volver a jugar</button>    
 </div>
+

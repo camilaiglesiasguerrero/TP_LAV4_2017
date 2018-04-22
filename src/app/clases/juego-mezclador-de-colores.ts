@@ -1,4 +1,6 @@
-export class MezcladorDeColores {
+import { Juego } from '../clases/juego';
+
+export class MezcladorDeColores extends Juego {
     redSecreto: number;
     greenSecreto: number;
     blueSecreto: number;
@@ -18,13 +20,15 @@ export class MezcladorDeColores {
 
     gano: boolean = false;
 
-    constructor(){
-    }
+    constructor(nombre?: string, gano?: boolean, jugador?:string) {
+        super("Mezclador de Colores",gano,jugador);
+     
+      }
 
     generarColor(){
         //hexString = yourNumber.toString(16);
         this.restaurarValores(1);
-            
+        this.gano = false;
         while(this.redSecreto % 51 != 0 || this.greenSecreto % 51 != 0 || this.blueSecreto % 51 != 0)
         {
             this.redSecreto = (Math.floor((Math.random() * 255) + 1));
@@ -81,9 +85,11 @@ export class MezcladorDeColores {
         return n;
     }
     
-    Verificar(){
+    public verificar () : boolean{
         if(this.redSecreto == this.redRespuesta && this.blueSecreto == this.blueRespuesta && this.blueSecreto == this.blueRespuesta)
             this.gano = true;
+        
+        return this.gano;
     }
 
     restaurarValores(cuales:number){

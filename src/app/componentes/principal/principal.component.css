@@ -178,13 +178,16 @@ p {font-size: 16px;}
   #lateral{
   width: 180px;  /*Este será el ancho que tendrá tu columna*/
   /*background-color: #CCCCCC;  /*Aquí pon el color del fondo que quieras para este lateral*/
+  margin-left:10px;
   float:left; /*Aqui determinas de lado quieres quede esta "columna" */
   }
 
+
+
     #principal{
-  margin-left:200px; /*Este margen hace que no se encime el contenido en tu menúlateral, es     importante que pongas un pocos pixeles más que el ancho  de tu columna lateral*/
+  margin-left:450px; /*Este margen hace que no se encime el contenido en tu menúlateral, es     importante que pongas un pocos pixeles más que el ancho  de tu columna lateral*/
   background-color: #FFFFFF;
   font-family: 'Pixabubble';
-  font-size: 20px;
+  font-size: 18px;
   /*border-left:#000000 4px solid; ponemos un dorde para que se vea bonito*/
   }

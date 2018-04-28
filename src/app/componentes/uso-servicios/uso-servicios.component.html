@@ -1,0 +1,8 @@
+<button (click)="traerTodos()">Todos</button>
+<button  (click)="traerUno(cual)">Por nombre</button>
+<input  [(ngModel)]="cual" type="text">
+
+<ul *ngFor="let pais of paises">
+<li>
+    {{pais.name}} 
+</li>

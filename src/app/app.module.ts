@@ -22,6 +22,11 @@ import { LoginComponent } from './componentes/login/login.component';
 // agrego las clases para utilizar ruteo
 import { RouterModule, Routes } from '@angular/router';
 
+//FIREBASE
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 //SERVICIOS
 import { MiHttpService } from './servicios/mi-http/mi-http.service'; 
 import { PaisesService } from './servicios/paises.service'; 
@@ -54,6 +59,16 @@ import { SexoPipe } from './pipes/sexo.pipe';
 import { ReglasDeJuegosComponent } from './componentes/reglas-de-juegos/reglas-de-juegos.component';
 import { MezcladorDeColoresComponent } from './Componentes/mezclador-de-colores/mezclador-de-colores.component';
 import { MezcladorReglasComponent } from './Componentes/mezclador-reglas/mezclador-reglas.component';
+import { UsoServiciosComponent } from './componentes/uso-servicios/uso-servicios.component';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyBk4330k8XRb1rw_CyadTDQyMtGaxbsbXg",
+  authDomain: "saladejuegos-d05fd.firebaseapp.com",
+  databaseURL: "https://saladejuegos-d05fd.firebaseio.com",
+  projectId: "saladejuegos-d05fd",
+  storageBucket: "saladejuegos-d05fd.appspot.com",
+  messagingSenderId: "524880656742"
+};
 
 @NgModule({
   declarations: [
@@ -82,7 +97,8 @@ import { MezcladorReglasComponent } from './Componentes/mezclador-reglas/mezclad
     SexoPipe,
     ReglasDeJuegosComponent,
     MezcladorDeColoresComponent,
-    MezcladorReglasComponent
+    MezcladorReglasComponent,
+    UsoServiciosComponent
   ],
   imports: [
     BrowserModule,
@@ -96,6 +112,9 @@ import { MezcladorReglasComponent } from './Componentes/mezclador-reglas/mezclad
     BrowserAnimationsModule,
     MatExpansionModule,
     MatDialogModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB6f8x4IjRlesQ3oETc6BXYQHVRTOlY3Ys'
     })

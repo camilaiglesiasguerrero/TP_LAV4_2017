@@ -16,7 +16,7 @@
 <div class= "container-fluid2"> </div>
 <div id="contenedor">
   <div id="lateral">
-      <app-menu></app-menu>
+      <app-menu (enviarDato)="Alertar($event)"></app-menu>
   </div>
 
 <div class="col-md-5" id="principal">
@@ -26,8 +26,7 @@
           <mat-tab-group  [selectedIndex]="selectedIndex" class="demo-tab-group bg-2">
             <mat-tab label="Iniciar sesión">
               <div class="demo-tab-content">
-                  
-                  <app-login></app-login>
+                  <app-login (enviarDato)="irA($event)"></app-login>
               </div>
             </mat-tab>
             <mat-tab label="Registrarme">
@@ -57,7 +56,7 @@
 
 </div>
 </body>
-
+<div id="snackbar">{{Mensaje}}</div>
 
 <!--
   <div style="margin-left:25%;padding:1px;height:1000px;" class='container'>

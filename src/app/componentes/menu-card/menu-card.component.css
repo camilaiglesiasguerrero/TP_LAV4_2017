@@ -1,42 +1,43 @@
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    border-radius: 5px; /* 5px rounded corners */
+    /*border-radius: 5px; /* 5px rounded corners */
     max-width: 300px;
-   height: 100%;
+    height: 100%;
     margin: 10px;
     padding-bottom: 10px;
     float: left;
-  background-color: #DEF3A6;
+    background-color: #FF8021;
     text-align: center;
 }
 
 /* Add rounded corners to the top left and the top right corner of the image */
 img {
-    border-radius: 5px 5px 0 0;
-    width: 200px;
-    height: 200px;
+    /*border-radius: 5px 5px 0 0;*/
+    width: 150px;
+    height: 150px;
 }/* Add some padding inside the card container */
 .container {
     padding: 2px 16px;
 }
 
-
+.btn{
+    font-family: 'Pixabubble';
+    font-size: 18px;
+}
 .button{
-    margin-left: 1px;
+   
     display: inline-block;
-    width: 90%;
+    width: 70%;
     padding: 5px 15px;
-    font-size: 24px;
+    font-size: 18px;
     text-align: center;
     cursor: pointer;
     outline: none;
     color: #fff;
     background-color: #4CAF50;
     border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
-
+    font-family: 'Pixabubble';
     border: none;
     outline: 0;
  
@@ -55,3 +56,31 @@ img {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
+
+  .lateral{
+    background-color: #FF8021;
+    margin-left: auto;
+    margin-right:auto ;
+    border-color: black;
+    border-style: solid;
+    font-family: 'Pixabubble';
+}
+
+.obj{
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+p{
+    font-family: 'Pixabubble';
+    font-size: 14pt;
+    color: black;
+}
+h2{
+    font-family: 'Pixabubble';
+    font-size: 20pt;
+    text-align: center;
+}
+
+

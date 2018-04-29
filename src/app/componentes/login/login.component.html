@@ -31,10 +31,10 @@
 
       <div class="container">
        <!-- <label><b>Usuario</b></label>-->
-        <input type="text" placeholder="Usuario"  [(ngModel)]="usuario"  name="uname" required>
+        <input type="text" placeholder="Mail: example@example.com"  [(ngModel)]="jugador.email"  name="uname" required>
 
        <!-- <label><b>Clave</b></label>-->
-        <input type="password" placeholder="Clave"  [(ngModel)]="clave" name="psw" required>
+        <input type="password" placeholder="Clave"  [(ngModel)]="jugador.clave" name="psw" required>
             
         <button   (click)="Entrar()" >Ingresar</button>
        <!--*ngIf="logeando"-->
@@ -45,7 +45,7 @@
         </div>-->
     <div>
         <input type="checkbox" checked="checked"> Recordar mis datos 
-        <span class="psw" href="#">¿Te olvidaste la clave?</span>
+        <button class="registro" (click)="Registrarse()">¿No tenés usuario? Registrate</button>
     </div>
     <div id="snackbar">{{Mensaje}}</div>
 <!--

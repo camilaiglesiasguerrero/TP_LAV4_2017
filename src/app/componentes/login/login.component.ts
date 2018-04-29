@@ -1,10 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireAuthModule,AngularFireAuth, } from 'angularfire2/auth';
 import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database-deprecated';
 import {Subscription} from "rxjs";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
+import { EventEmitter } from '@angular/core';
+import { Jugador } from '../../clases/jugador';
 
 @Component({
   selector: 'app-login',
@@ -14,20 +16,20 @@ import {TimerObservable} from "rxjs/observable/TimerObservable";
 export class LoginComponent implements OnInit {
 
   private subscription: Subscription;
-  usuario = '';
-  clave= '';
   Mensaje: string;
+  jugador: Jugador;
 
   constructor(private _auth:AngularFireAuth,
     private route: ActivatedRoute,
     private router: Router) {
+      this.jugador = new Jugador();
   }
   
   
   async Entrar() {
-    if(this.usuario==null||this.clave==null||this.usuario==''||this.clave=='')
+    if(this.jugador.email==null||this.jugador.clave==null||this.jugador.email==''||this.jugador.clave=='')
       {
-        this.Mensaje="¡Debés ingresar usuario y clave para poder entrar a jugar!";    
+        this.Mensaje="¡Debés ingresar email válido y clave para poder entrar a jugar!";    
         var x = document.getElementById("snackbar");
         x.className = "show Perdedor";
      setTimeout(function(){ 
@@ -36,13 +38,25 @@ export class LoginComponent implements OnInit {
 
       }
       else{
-        await this._auth.auth.signInWithEmailAndPassword(this.usuario,this.clave)
-                        .then(result => {  this.router.navigate(['/Juegos']);})
-                        .catch(error =>{ alert(error.message)})
+        await this._auth.auth.signInWithEmailAndPassword(this.jugador.email,this.jugador.clave)
+                        .then(result => {  
+                          this.jugador.Guardar();
+                          this.router.navigate(['/Juegos'])
+                          ;})
+                        .catch(error =>{ this.Mensaje= error.message })
+                        var x = document.getElementById("snackbar");
+                        x.className = "show Perdedor";
+                     setTimeout(function(){ 
+                        x.className = x.className.replace("show", "");
+                     }, 3000);
       }  
   }
 
-  
+@Output() enviarDato:EventEmitter<any> = new EventEmitter<any>();
+
+Registrarse(){
+  this.enviarDato.emit(1);
+}  
 
   ngOnInit() {
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Jugador } from '../../clases/jugador';
 
 @Component({
   selector: 'app-cabecera',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cabecera.component.css']
 })
 export class CabeceraComponent implements OnInit {
+  
+  jugador : Jugador;
 
-  constructor() { }
+  constructor() { 
+    this.jugador = new Jugador();
+    this.jugador.Traer();
+  }
 
   ngOnInit() {
   }
-
+  
+  LogOut()
+  {
+    this.jugador.Clear();
+  }
 }

@@ -8,19 +8,31 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="divider-vertical"></li>
-        <li class="nav-item active">
+      <!--  <li class="nav-item active">
           <a class="nav-link" href="/Principal" class='a'><span class="fa fa-home"></span> Inicio</a>
         </li>
+        <li class="divider-vertical"></li>-->
+        <li class="nav-item active">
+          <a class="nav-link" class="a" style="color:whitesmoke; font-size:16px;">Bienvenido, {{jugador.email}}</a>
+        </li>
         <li class="divider-vertical"></li>
-        
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/Juegos" class='a'><span class="fa fa-trophy"></span> Tu Ranking</a>
+        </li>
+        <li class="divider-vertical"></li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/Juegos" class='a'><span class="fa fa-cubes"></span> Ranking</a>
+        </li>
+        <li class="divider-vertical"></li>
+
         <li class="nav-item">
         <!--  <a routerLink="/Registro"><span class="fa fa-pencil-square-o"></span>Registrarse </a>-->
-        <a class="nav-link" routerLink="/Juegos" class='a'><span class="fas fa-gamepad"></span>Juegos</a>
+        <a class="nav-link" routerLink="/Juegos" class='a'><span class="fa fa-gamepad"></span> Juegos</a>
         </li>
         <li class="divider-vertical"></li>
         <li class="nav-item">
         <!--    <a  routerLink="/Login"><span class="fa fa-sign-in"></span> Ingresar</a>-->
-        <a class="nav-link" routerLink="/Principal" class='a'><span class="fa fa-sign-out"></span>Salir</a>
+        <a class="nav-link" routerLink="/Principal" (click)="LogOut()" class='a'><span class="fa fa-sign-out"></span>Salir</a>
         </li>
       </ul>
       <form class="form-inline my-2  my-lg-0">

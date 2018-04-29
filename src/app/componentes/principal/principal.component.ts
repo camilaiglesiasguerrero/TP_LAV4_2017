@@ -10,6 +10,7 @@ import {  MatIconModule } from '@angular/material';
 })
 export class PrincipalComponent implements OnInit {
   selectedIndex:number=0;
+  Mensaje: string;
 
   public status: any = {
     isFirstOpen: true,
@@ -21,20 +22,30 @@ export class PrincipalComponent implements OnInit {
   ngOnInit() {
   }
 
-  irA(donde: string)
+  irA(donde: number)
   {
     switch(donde)
     {
-      case 'iniciarSesion':
+      case 0:
         this.selectedIndex=0;
         break;
-      case 'registrarme':
+      case 1:
         this.selectedIndex=1;
-        break;
-      case 'jugarInvitado':
-        this.router.navigate(['/Invitado']);        
         break;
     }
   }
+
+  Alertar(i: number)
+  {
+    if(i==0)
+    {
+      this.Mensaje="¡Debés ingresar email válido y clave para poder entrar a jugar!";
+      var x = document.getElementById("snackbar");
+      x.className = "show Perdedor";
+      setTimeout(function(){ 
+        x.className = x.className.replace("show", "");
+    }, 3000);
+  }
+}
 
 }

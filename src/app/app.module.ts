@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSidenavModule} from '@angular/material/sidenav';
-
+//import {DialogModule} from 'primeng/dialog';
 import { HttpModule } from '@angular/http';
 import  {MatExpansionModule } from '@angular/material/expansion';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -60,6 +60,7 @@ import { ReglasDeJuegosComponent } from './componentes/reglas-de-juegos/reglas-d
 import { MezcladorDeColoresComponent } from './Componentes/mezclador-de-colores/mezclador-de-colores.component';
 import { MezcladorReglasComponent } from './Componentes/mezclador-reglas/mezclador-reglas.component';
 import { UsoServiciosComponent } from './componentes/uso-servicios/uso-servicios.component';
+import { FooterComponent } from './Componentes/footer/footer.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBk4330k8XRb1rw_CyadTDQyMtGaxbsbXg",
@@ -98,7 +99,8 @@ export const firebaseConfig = {
     ReglasDeJuegosComponent,
     MezcladorDeColoresComponent,
     MezcladorReglasComponent,
-    UsoServiciosComponent
+    UsoServiciosComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -112,6 +114,7 @@ export const firebaseConfig = {
     BrowserAnimationsModule,
     MatExpansionModule,
     MatDialogModule,
+    //DialogModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,

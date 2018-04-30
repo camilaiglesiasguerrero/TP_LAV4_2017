@@ -11,8 +11,7 @@ export abstract class Juego {
       this.gano = gano;
     if(jugador)
       this.jugador=jugador;
-    else
-      this.jugador= "natalia natalia";
+   
   }
 
 

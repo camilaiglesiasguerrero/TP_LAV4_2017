@@ -16,6 +16,16 @@ export class Jugador {
         this._clave = v;
     }
     
+    
+    private _jugadas : Array<any>;
+    public get jugadas() : Array<any> {
+        return this._jugadas;
+    }
+    public set jugadas(v : Array<any>) {
+        this._jugadas = v;
+    }
+    
+
     public Guardar()
     {
        localStorage.setItem('Jugador',JSON.stringify(this));
@@ -37,8 +47,6 @@ export class Jugador {
 
     public Clear()
     {
-        console.log("adios localstorage");
-        localStorage.clear();
-        console.log(JSON.parse(localStorage.getItem('Jugador')));
+        localStorage.clear();   
     }
 }

@@ -10,7 +10,7 @@ import {  MatIconModule } from '@angular/material';
 })
 export class PrincipalComponent implements OnInit {
   selectedIndex:number=0;
-  Mensaje: string;
+  mje: string;
 
   public status: any = {
     isFirstOpen: true,
@@ -39,7 +39,7 @@ export class PrincipalComponent implements OnInit {
   {
     if(i==0)
     {
-      this.Mensaje="¡Debés ingresar email válido y clave para poder entrar a jugar!";
+      this.mje="¡Debés ingresar email válido y clave para poder entrar a jugar!";
       var x = document.getElementById("snackbar");
       x.className = "show Perdedor";
       setTimeout(function(){ 

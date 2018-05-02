@@ -1,20 +1,31 @@
 import { Juego } from "./juego";
 import { Jugador } from "./jugador";
 export class JuegoPiedraPapelTijera extends Juego{
-
+  resultado: string;
   eleccion:number;
   eleccionMaq : number;
 
     constructor(nombre?: string, gano?: boolean, jugador?:Jugador) {
         super("Piedra Papel o Tijera",gano,jugador);
+        this.eleccion = 0;
       }
     
     public verificar() {
       this.eleccionMaq = Math.floor(Math.random()*3)+1;
-      console.log(this.eleccion + '-' + this.eleccionMaq);
+      
+      if(this.eleccion == 0)
+      {
+        return this.gano = false;
+      }
       if(this.eleccion == 1 && this.eleccionMaq == 3 || this.eleccion == 2 && this.eleccionMaq == 1 || this.eleccion == 3 && this.eleccionMaq == 2 )
-        return this.gano = true;  
-      else 
+      { 
+        return this.gano = true; 
+      }
+      else if(this.eleccion == 1 && this.eleccionMaq == 1 || this.eleccion ==2 && this.eleccionMaq == 2 || this.eleccion == 3 && this.eleccionMaq == 3)
+      {
+        return this.gano = null;
+      }
+      else
         return this.gano = false;
         
      }

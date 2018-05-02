@@ -22,7 +22,6 @@ export class JuegoTateti extends Juego{
     grilla: Array<any>;
     
     public verificar() {
-        console.info(this);
         if(this.grilla[0].valor != '' && this.grilla[0].conValor == 'true')
         {
            if(this.grilla[1].valor != '' && this.grilla[1].conValor=='true' && this.grilla[1].valor == this.grilla[0].valor)
@@ -68,7 +67,8 @@ export class JuegoTateti extends Juego{
              }
            }
         }
-        else if(this.grilla[1].valor != '' && this.grilla[1].conValor == 'true')
+        
+        if(this.grilla[1].valor != '' && this.grilla[1].conValor == 'true')
         {
            if(this.grilla[4].valor != '' && this.grilla[4].conValor=='true' && this.grilla[4].valor == this.grilla[1].valor )
            {
@@ -78,7 +78,8 @@ export class JuegoTateti extends Juego{
              }
            }
         }
-        else if(this.grilla[3].valor != '' && this.grilla[3].conValor == 'true')
+        
+        if(this.grilla[3].valor != '' && this.grilla[3].conValor == 'true')
         {
            if(this.grilla[4].valor != '' && this.grilla[4].conValor=='true' && this.grilla[4].valor == this.grilla[3].valor )
            {
@@ -88,21 +89,19 @@ export class JuegoTateti extends Juego{
              }
            }
         }
-        else if(this.grilla[6].valor != '' && this.grilla[6].conValor == 'true')
+        
+        if(this.grilla[6].valor != '' && this.grilla[6].conValor == 'true')
         {
-            console.info("6 Ok");
            if(this.grilla[7].valor != '' && this.grilla[7].conValor=='true' && this.grilla[7].valor == this.grilla[6].valor )
            {
-            console.info("6 y 7 Ok");
             if(this.grilla[8].valor != '' && this.grilla[8].conValor=='true'  && this.grilla[8].valor == this.grilla[7].valor)
             {
-                console.info("6, 7,8 Ok");
                 return this.gano = true;
              }
            }
         }
         else
-        {
+        {   
            return this.gano = false;
         }
             

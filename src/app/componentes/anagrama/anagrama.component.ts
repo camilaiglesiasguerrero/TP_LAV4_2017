@@ -69,9 +69,13 @@ export class AnagramaComponent implements OnInit {
   }
 
   Verificar(){
-    clearInterval(this.timer);
-  if(!this.anagrama.verificar())
-    this.seRindio = true;
+    if(this.anagrama.palabraResultado != '' && this.anagrama.palabraResultado != null)
+    {
+      
+      clearInterval(this.timer);
+      if(!this.anagrama.verificar())
+      this.seRindio = true;
+    }
   }
 
   Rendirse(){

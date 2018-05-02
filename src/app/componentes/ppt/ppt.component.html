@@ -1,10 +1,55 @@
-<tr>
-  <th><a (click)='Elegir(1)'><img class='img' src="../../../assets/imagenes/piedra.png" alt=""></a></th>
-  <th><a (click)='Elegir(2)'><img class='img' src="../../../assets/imagenes/papel.png" alt=""></a></th>
-  <th><a (click)='Elegir(3)'><img class='img' src="../../../assets/imagenes/tijera.png" alt=""></a></th>
-<th>VS.</th>
-  <th><img class='img' src="../../../assets/imagenes/piedra1.png" alt=""></th>
-  <th><img class='img' src="../../../assets/imagenes/papel1.png" alt=""></th>
-  <th><img class='img' src="../../../assets/imagenes/tijera1.png" alt=""></th>
-</tr>
+<div style="background-color:#22735C;" class="parpadeo titulo">
+    Piedra, Papel o Tijera
+  </div>
+  <br>
 
+ <div style="margin-left: 10px">
+      <!--Reglas de juego-->
+      <p-dialog header="Reglas del Juego: Piedra, Papel o Tijera" [(visible)]="display" [modal]="true" [responsive]="true" [width]="550" [minWidth]="200"  [style]="{'font-family':'Pixabubble','font-size':'18pt','background-color': '#FF8021'}">
+              <span>Jugá contra la máquina al clásico piedra, papel o tijera. Al mejor de tres. Cliqueá la imagen para elegir tu jugada antes de que se termine de decir "Piedra, Papel o Tijera".
+                  <br> Para empezar a jugar hace clic en "Comenzar".  </span>
+                  <p-footer>
+                      <button type="button" class="btn btn-success" (click)="display=false" ><i class="fa fa-check-square"></i> Entendido!</button>
+                  </p-footer>
+            </p-dialog>
+            
+            <button type="button" class="btn btn-primary" (click)="showDialog()" pButton label="Show"><i class="fa fa-external-link-alt"></i>¿Cómo se juega?</button>
+            <button type="button" class="btn btn-warning" (click)='irA()'>Ir a todos los juegos</button>    
+            <button type="button" class="btn btn-success" [hidden]='enJuego' (click)='Comenzar(0)'>Comenzar</button>
+            <p class="tiempo" readonly >{{cartel}}</p> 
+            
+            <!--Fin reglas de juego-->
+      </div>
+      
+<div [hidden]='!jugar' style="margin-left:20%">
+  <tr>
+    <th><a (click)='Elegir(1)'><img class='img' src="../../../assets/imagenes/piedra.png" alt=""></a></th>
+    <th><a (click)='Elegir(2)'><img class='img' src="../../../assets/imagenes/papel.png" alt=""></a></th>
+    <th><a (click)='Elegir(3)'><img class='img' src="../../../assets/imagenes/tijera.png" alt=""></a></th>
+  <th class="txt">VS.</th>
+    <th><img class='img' src="../../../assets/imagenes/piedra1.png" alt=""></th>
+    <th><img class='img' src="../../../assets/imagenes/papel1.png" alt=""></th>
+    <th><img class='img' src="../../../assets/imagenes/tijera1.png" alt=""></th>
+  </tr>
+</div>
+
+<div [hidden]='jugar'style="margin-left:30%">
+    <tr>
+      <th></th>
+      <th></th>
+      <th><img [hidden]="!eleccion0" class='img' src="../../../assets/imagenes/sinEleccion.png" alt="" width="40%"><br><a [hidden]="!eleccion0">Ouch! ¡¡No elegiste!!</a></th>
+      <th><img [hidden]="!eleccion1" class='img' src="../../../assets/imagenes/piedra.png" alt=""></th>
+      <th><img [hidden]="!eleccion2" class='img' src="../../../assets/imagenes/papel.png" alt=""></th>
+      <th><img [hidden]="!eleccion3" class='img' src="../../../assets/imagenes/tijera.png" alt=""></th>
+      <th class="txt">VS.  </th>
+      <th><img [hidden]="!eleccionM1"class='img' src="../../../assets/imagenes/piedra1.png" alt=""></th>
+      <th><img [hidden]="!eleccionM2"class='img' src="../../../assets/imagenes/papel1.png" alt=""></th>
+      <th><img [hidden]="!eleccionM3" class='img' src="../../../assets/imagenes/tijera1.png" alt=""></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </div>
+<div style="margin-left:45%" class='txt'>
+  {{jug}} - {{maq}}
+</div>
+<div id="snackbar">{{Mensaje}}</div>

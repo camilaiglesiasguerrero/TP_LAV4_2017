@@ -16,7 +16,8 @@ export class JuegoAnagrama extends Juego {
         this.arrayOrdenado.push({'palabra':'ESCEPTICO','letras':['E','S','C','E','P','T','I','C','O']});
         this.arrayOrdenado.push({'palabra':'DRAMATURGIA','letras':['D','R','A','M','A','T','U','R','G','I','A']});
         this.arrayOrdenado.push({'palabra':'BICICLETA','letras':['B','I','C','I','C','L','E','T','A']});
-        this.arrayOrdenado.push({'palabra':'RODANTE','letras':['R','O','D','A','N','T','E']});
+        //this.arrayOrdenado.push({'palabra':'RODANTE','letras':['R','O','D','A','N','T','E']}); se quita porque puede ser rodante o detonar
+        this.arrayOrdenado.push({'palabra':'DETONACION','letras':['D','E','T','O','N','A','C','I','O','N']});
         this.arrayOrdenado.push({'palabra':'PROGRAMADOR','letras':['P','R','O','G','R','A','M','A','D','O','R']});
         this.arrayOrdenado.push({'palabra':'DISEÑO','letras':['D','I','S','E','Ñ','O']});
         this.arrayOrdenado.push({'palabra':'LIBERTINAJE','letras':['L','I','B','E','R','T','I','N','A','J','E']});

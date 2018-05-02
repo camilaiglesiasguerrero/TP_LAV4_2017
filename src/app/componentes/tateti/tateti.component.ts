@@ -70,7 +70,7 @@ Cargar(num){
     {
       this.ganador2 = true;
     }
-    if(this.contador==9)
+    if(this.contador==9 && (this.ganador1==false && this.ganador2 == false))
     {
       this.ganador1 = true;
       this.ganador2 = true;

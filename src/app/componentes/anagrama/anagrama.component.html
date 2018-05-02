@@ -2,28 +2,50 @@
   <img src="../../../assets/imagenes/ANAGRAMA.gif" alt="Avatar" style="margin-left:190px;width: 70%">
 </div>
 <br>
-<!--Reglas de juego
 
-<p-dialog header="Reglas del Juego: Anagrama" [(visible)]="display" [modal]="true" [responsive]="true" [width]="550" [minWidth]="200" [minY]="70"  [style]="{'font-family':'Pixabubble','font-size':'18pt','background-color': '#FF8021'}">
-  <span>El juego consiste en reordenar las letras para formar una palabra. Hacelo antes de que se termine el tiempo... <br>Para empezar a jugar hace clic en comenzar!</span>
-      <p-footer>
-          <button type="button" class="btn btn-success" (click)="display=false" ><i class="fa fa-check-square"></i> Entendido!</button>
-      </p-footer>
-</p-dialog>
-
-<button type="button" class="btn btn-primary" (click)="showDialog()" pButton label="Show"><i class="fa fa-external-link-alt"></i>¿Cómo se juega?</button>
-<!--Fin reglas de juego-->
+<div [hidden]='verifica' style="margin-left: 10px">
+    <!--Reglas de juego-->
+    <p-dialog header="Reglas del Juego: Anagrama" [(visible)]="display" [modal]="true" [responsive]="true" [width]="550" [minWidth]="200"  [style]="{'font-family':'Pixabubble','font-size':'18pt','background-color': '#FF8021'}">
+            <span>El juego consiste en reordenar las letras para formar una palabra. Hacelo en el menor tiempo posible. <br>Para empezar a jugar hace clic en comenzar!  </span>
+                <p-footer>
+                    <button type="button" class="btn btn-success" (click)="display=false" ><i class="fa fa-check-square"></i> Entendido!</button>
+                </p-footer>
+          </p-dialog>
+          
+          <button type="button" class="btn btn-primary" (click)="showDialog()" pButton label="Show"><i class="fa fa-external-link-alt"></i>¿Cómo se juega?</button>
+          <button type="button" class="btn btn-warning" (click)='irA()'>Ir a todos los juegos</button>    
+          <!--Fin reglas de juego-->
+    </div>
+      
+      
 
 <div class='container' [hidden]='verifica'>
   <div class="cabecera"> 
       <button type="button" class="mi-btn btn-success" (click)='generarPalabra()'>Comenzar</button>
-      <p  class="tiempo" readonly [hidden]='!empiezaElJuego'>{{cronometro}}<i class="mili">{{cronoMili}}</i></p> 
+      <p  class="tiempo" readonly >{{cronometro}}<i class="mili">{{cronoMili}}</i></p> 
+  </div>
+ <div [hidden]='!empiezaElJuego'> 
+    <a class='txt' *ngFor="let letra of anagrama.palabraAMostrar">
+      <b> {{letra}} </b>           
+    </a>
+  
+    <br>
+<div [hidden]='anagrama.gano'>
+  <input [(ngModel)]='anagrama.palabraResultado' [hidden]='seRindio' class='txt' style="width:50%" type="text">
+  <input [(ngModel)]='laPalabra' [hidden]='!seRindio' class='txt' readonly style="width:50%; background-color:firebrick" type="text">
+  <i [hidden]='!seRindio' class="fa fa-times" style="color:red; font-size:36px"></i>
+</div>
+  <div [hidden]='!anagrama.gano'>
+    <input [(ngModel)]='laPalabra' [hidden]='seRindio'  class='txt' readonly style="width:50%; background-color:forestgreen" type="text">
+    <i  class="fa fa-check" style="color:green; font-size:36px"></i>
+  </div>
+  <br>
+  <div [hidden]='anagrama.gano'>
+    <button type="button" class="mi-btn2 btn-warning" [hidden]='seRindio' (click)='Mezclar()'>Mezclar letras</button>
+    <button type="button" class="mi-btn2 btn-success" [hidden]='seRindio' (click)='Verificar()'>Comprobar</button>
+    <button type="button" class="mi-btn2 btn-danger" [hidden]='seRindio'(click)='Rendirse()'>Rendirse</button>
   </div>
   
-  <a class='txt' *ngFor="let letra of anagrama.palabraAMostrar">
-    <b> {{letra}} </b>           
-  </a>
-
-<input [(ngModel)]='anagrama.palabraResultado' type="text">
-<button (click)='Verificar()'>Verificar</button>
+  
+  </div>
 </div>

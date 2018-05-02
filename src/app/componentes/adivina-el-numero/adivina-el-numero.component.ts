@@ -10,6 +10,7 @@ import { JuegoAdivina } from '../../clases/juego-adivina'
 export class AdivinaElNumeroComponent implements OnInit {
  @Output() enviarJuego: EventEmitter<any>= new EventEmitter<any>();
 
+
   nuevoJuego: JuegoAdivina;
   Mensajes:string;
   contador:number;

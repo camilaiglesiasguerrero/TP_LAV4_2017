@@ -8,7 +8,7 @@ import { PaisesService } from '../../servicios/paises.service';
 })
 export class UsoServiciosComponent implements OnInit {
   paises : any; 
-
+  cual: any;
   constructor(private servPais : PaisesService) { 
     
   }

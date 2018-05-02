@@ -1,21 +1,16 @@
+import { Jugador } from './jugador';
+
 export abstract class Juego {
-  public nombre = 'Sin Nombre';
-  public jugador: string;
+  public juego = 'Sin Nombre';
+  public jugador: Jugador;
   public gano = false;
-
-  constructor(nombre?: string, gano?: boolean,jugador?:string) {
-    if (nombre)
-      this.nombre = nombre;
-
-    if (gano)
-      this.gano = gano;
-    if(jugador)
-      this.jugador=jugador;
-   
-  }
-
-
   
+  constructor(juego?: string, gano?: boolean,jugador?:Jugador) {
+    this.juego = juego;
+    this.gano = gano;
+    this.jugador=jugador;
+    
+  }
 
   public abstract verificar():boolean; 
   

@@ -1,0 +1,63 @@
+<div style="background-color:#22735C;" class="parpadeo titulo">
+  <img src="../../../assets/imagenes/X.png" alt="" class="imgI">
+  TaTeTi
+  <img src="../../../assets/imagenes/O.png" class="imgD" alt="">
+</div>
+<br>
+
+<div [hidden]='verifica' style="margin-left: 10px">
+    <!--Reglas de juego-->
+    <p-dialog header="Reglas del Juego: TaTeTi" [(visible)]="display" [modal]="true" [responsive]="true" [width]="550" [minWidth]="200"  [style]="{'font-family':'Pixabubble','font-size':'18pt','background-color': '#FF8021'}">
+            <span>Clásico Tateti... Juego entre dos jugadores. El objetivo es formar tres imágenes en línea, ya sea horizontal, vertical o diagonalmente. El primer participante será la comedia; el segundo, la tragedia. ¿Quién ganará?
+                Para empezar a jugar simplemente hace clic en uno de los casilleros. </span>
+                <p-footer>
+                    <button type="button" class="btn2 btn-success" (click)="display=false" ><i class="fa fa-check-square"></i> Entendido!</button>
+                </p-footer>
+          </p-dialog>
+          
+          <button type="button" class="btn2 btn-primary" (click)="showDialog()" pButton label="Show"><i class="fa fa-external-link-alt"></i>¿Cómo se juega?</button>
+          <button type="button" class="btn2 btn-warning" (click)='irA()'>Ir a todos los juegos</button>    
+          <button class="btn2 btn-success" [hidden]="!yaJugo" (click)="LimpiarGrilla()">Comenzar de nuevo</button>
+          <!--Fin reglas de juego-->
+    </div>
+
+<body>
+  <br>
+    <div class= "container-fluid2"> </div>
+    <div id="contenedor">
+      <div id="lateral">
+          <label class="lbl">Jugador 1</label> 
+          <br>
+          <img src="../../../assets/imagenes/X.png" [hidden]="ganador1" alt="" style="width:25%; transform: rotate(-15deg);"><i [hidden]='!tateti.turno || ganador2 ' class="fa fa-chevron-circle-left" style="color:red; font-size:40px"></i>
+          <img src="../../../assets/imagenes/X.png" [hidden]="!ganador1" alt="" class="animacion">
+          <br>
+          <label class="lbl">Jugador 2</label>
+          <br>
+          <img src="../../../assets/imagenes/O.png" alt="" [hidden]="ganador2" style="width:25%; transform: rotate(15deg);"><i [hidden]='tateti.turno || ganador1' class="fa fa-chevron-circle-left" style="color:red; font-size:40px"></i>
+          <img src="../../../assets/imagenes/O.png" [hidden]="!ganador2" alt="" class="animacion">
+          <br>
+          
+      </div>
+    
+<div class="col-md-5" id="principal">
+
+  <tr>
+    <th><button id="0" [disabled]='!this.tateti.grilla[0].conValor || this.tateti.gano' (click)=Cargar(0)>{{this.tateti.grilla[0].valor}}</button></th>
+    <th><button id="1" [disabled]='!this.tateti.grilla[1].conValor || this.tateti.gano' (click)=Cargar(1)>{{this.tateti.grilla[1].valor}}</button></th>
+    <th><button id="2" [disabled]='!this.tateti.grilla[2].conValor || this.tateti.gano' (click)=Cargar(2)>{{this.tateti.grilla[2].valor}}</button></th>
+  </tr>
+  <tr>
+    <th><button id="3" [disabled]='!this.tateti.grilla[3].conValor || this.tateti.gano' (click)=Cargar(3)>{{this.tateti.grilla[3].valor}}</button></th>
+    <th><button id="4" [disabled]='!this.tateti.grilla[4].conValor || this.tateti.gano' (click)=Cargar(4)>{{this.tateti.grilla[4].valor}}</button></th>
+    <th><button id="5" [disabled]='!this.tateti.grilla[5].conValor || this.tateti.gano' (click)=Cargar(5)>{{this.tateti.grilla[5].valor}}</button></th>
+  </tr>
+  <tr>
+    <th><button id="6" [disabled]='!this.tateti.grilla[6].conValor || this.tateti.gano' (click)=Cargar(6)>{{this.tateti.grilla[6].valor}}</button></th>
+    <th><button id="7" [disabled]='!this.tateti.grilla[7].conValor || this.tateti.gano' (click)=Cargar(7)>{{this.tateti.grilla[7].valor}}</button></th>
+    <th><button id="8" [disabled]='!this.tateti.grilla[8].conValor || this.tateti.gano' (click)=Cargar(8)>{{this.tateti.grilla[8].valor}}</button></th>
+  </tr>
+</div>
+
+<div id="snackbar">{{Mensaje}}</div>
+</div>
+

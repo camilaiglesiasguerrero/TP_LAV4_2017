@@ -1,4 +1,7 @@
-export class JuegoAgilidad {
+import {Jugador} from './jugador';
+import { Juego } from './juego';
+
+export class JuegoAgilidad extends Juego{
     numero1: number;
     operador: string;
     numero2: number;
@@ -10,14 +13,15 @@ export class JuegoAgilidad {
     Gano: boolean;
     Jugador: string;
 
-    constructor() { 
-        }
+    constructor(nombre?: string, gano?: boolean, jugador?:Jugador) {
+        super("Adivina el número",gano,jugador); 
+      }
       
         public GenerarCalculo():void{
           this.Gano =false;
           this.resultado = 0;
           this.respuesta = 0;
-          this.temporizador = setTimeout (this.Verificar,1000);
+          this.temporizador = setTimeout (this.verificar,1000);
           this.numero1 = Math.floor(Math.random()*10+1);
           this.numero2 = Math.floor(Math.random()*10+1);
           let operadorN = Math.floor((Math.random()*4)+1);
@@ -53,7 +57,7 @@ export class JuegoAgilidad {
           
         }
 
-    public Verificar():boolean {
+    public verificar():boolean {
         //console.log("estoy verificando en juego-agilidad");
         if(this.resultado == this.respuesta)
         {

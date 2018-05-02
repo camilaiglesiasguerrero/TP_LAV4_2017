@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MezcladorReglasComponent } from './mezclador-reglas.component';
+import { PptComponent } from './ppt.component';
 
-describe('MezcladorReglasComponent', () => {
-  let component: MezcladorReglasComponent;
-  let fixture: ComponentFixture<MezcladorReglasComponent>;
+describe('PptComponent', () => {
+  let component: PptComponent;
+  let fixture: ComponentFixture<PptComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MezcladorReglasComponent ]
+      declarations: [ PptComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MezcladorReglasComponent);
+    fixture = TestBed.createComponent(PptComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

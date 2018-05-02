@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MezcladorDeColores } from '../../clases/juego-mezclador-de-colores';
 import { NgStyle } from '@angular/common';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
-import {MezcladorReglasComponent} from '../mezclador-reglas/mezclador-reglas.component';
-
-
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-mezclador-de-colores',
@@ -12,7 +9,7 @@ import {MezcladorReglasComponent} from '../mezclador-reglas/mezclador-reglas.com
   styleUrls: ['./mezclador-de-colores.component.css']
 })
 export class MezcladorDeColoresComponent implements OnInit {
-  
+  display: boolean = false;
   mezclador : MezcladorDeColores;
   empiezaElJuego : boolean = false;
   minutos: number = 0;
@@ -26,10 +23,13 @@ export class MezcladorDeColoresComponent implements OnInit {
   cronometro: string;
   cronoMili: string;
 
-  constructor(public dialog: MatDialog){
+  constructor(private route: ActivatedRoute,
+    private router: Router){
     this.mezclador = new MezcladorDeColores();
     this.mezclador.elColorSecreto = '#000000';
     this.mezclador.elColorRespuesta = '#000000';  
+    this.cronometro = '00:00.';
+    this.cronoMili = '0';
   }
 
   ngOnInit() {
@@ -90,12 +90,12 @@ export class MezcladorDeColoresComponent implements OnInit {
     this.mezclador.restaurarValores(2);
   }
   
-  openDialog() {
-    const dialogRef = this.dialog.open(MezcladorReglasComponent, {
-      height: '250px',
-      width: '600px',
-      position: {}
-    }); 
+  showDialog() {
+    this.display = true;
+  }
+
+  irA(){
+    this.router.navigate(['/Juegos']);
   }
 }
 

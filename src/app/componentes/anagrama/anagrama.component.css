@@ -2,7 +2,10 @@
     width: 500px;
     height: 70px;
 }
-
+.mi-btn2{
+  width: 20%;
+  height: 70px;
+}
 .tiempo{
   font-size: 36px;
   font-family: 'beyond_the_mountains';
@@ -100,7 +103,7 @@ button{
 
 .cabecera {
   padding: 15px;
-  
+  margin-left:15px;
 }
 .menu {
   width: 27%;
@@ -172,6 +175,8 @@ button{
   font-family: 'Pixabubble';
   color:black;
   font-size: 40px;
+  margin-left:20px;
+  text-align: center;
 }
 .lbl{
   font-family: 'beyond_the_mountains';

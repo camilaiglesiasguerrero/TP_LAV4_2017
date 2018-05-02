@@ -70,7 +70,7 @@ export class AgilidadAritmeticaComponent implements OnInit {
   {
     this.ocultarVerificar=false;
     clearInterval(this.repetidor);
-    if (this.nuevoJuego.Verificar()){
+    if (this.nuevoJuego.verificar()){
       //console.log("estoy verificando en agilidad component");
       this.enviarJuego.emit(this.nuevoJuego);
       this.MostrarMensaje("Ganaste",true);

@@ -1,0 +1,247 @@
+button{
+    width: 100px;
+    height: 100px;
+    font-size: 1pt;    
+}
+empty{
+  width: 100px;
+  height: 100px;
+  font-size: 1pt;    
+}
+
+button.X{
+    width: 100px;
+    height: 100px;
+    background: url('../../../assets/imagenes/X.png');
+    background-size: 79%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+button.O{
+    width: 100px;
+    height: 100px;
+    background: url('../../../assets/imagenes/O.png');
+    background-size: 79%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#contenedor{
+    text-align: left;
+    /*width: 750px;*/
+    margin: auto;}
+    
+    #lateral{
+    width: 25%;  /*Este será el ancho que tendrá tu columna*/
+    /*background-color: #CCCCCC;  /*Aquí pon el color del fondo que quieras para este lateral*/
+    margin-left:5%;
+    float:left; /*Aqui determinas de lado quieres quede esta "columna" */
+    }
+  
+  
+   #principal{
+    margin-left:40%; /*Este margen hace que no se encime el contenido en tu menúlateral, es     importante que pongas un pocos pixeles más que el ancho  de tu columna lateral*/
+    
+    background-color: #FFFFFF;
+    font-family: 'Pixabubble';
+    font-size: 18px;
+    /*border-left:#000000 4px solid; ponemos un dorde para que se vea bonito*/
+    }
+
+.titulo{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'beyond_the_mountains';
+    font-weight: bold;
+    font-size: 60px;
+    text-align: center;
+  }
+
+  .imgI{
+      width: 5%;
+      transform: rotate(20deg);
+  } 
+  .imgD{
+    width: 5%;
+    transform: rotate(-20deg);
+}
+
+.mi-btn{
+    width: 500px;
+    height: 70px;
+}
+
+.btn2{
+    font-family: 'olivier_demo';
+    font-size: 18pt;
+    width: 220px;
+    height: 50px;
+    border-radius: 4%;
+}
+
+.tiempo{
+  font-size: 36px;
+  font-family: 'beyond_the_mountains';
+  text-align: center;
+  background-color: grey;
+  width: 300px;
+  height: 60px;
+  float: right;
+}
+.mili
+{
+  font-size: 25px;
+}
+.cuadro{
+  width: 250px;
+  height: 250px;
+  font-family: 'olivier_demo';
+  font-size: 14pt;
+  border: black;
+  border-style: solid;
+}
+
+.img { 
+    width: 15%;
+    height: 15%;
+   }
+
+     
+.container-fluid {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-left: 10px;
+   }
+
+.obj{
+    width: 10%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .titulo{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'beyond_the_mountains';
+    font-weight: bold;
+    font-size: 60px;
+    text-align: center;
+  }
+
+button{
+  font-size: 1pt;
+}
+
+.signo{
+  width: 50%;
+  height: 50%;
+  border: grey;
+  border-style: solid;
+}
+
+.cabecera {
+  padding: 15px;
+  
+}
+.menuRight {
+    margin-left:10px;
+
+}
+.main {
+  width: 46%;
+  
+  padding: 15px; 
+  
+}
+
+.resultado{
+  font-family: 'beyond_the_mountains';
+    font-weight: bold;
+    font-size: 30px;
+}
+
+
+.txt{
+  font-family: 'Pixabubble';
+  color:black;
+  font-size: 20px;
+}
+.lbl{
+  font-family: 'beyond_the_mountains';
+  font-weight: bold;
+  color:black;
+  font-size: 25px;
+}
+.recuadro{
+  width: 50px;
+  height: 50px; 
+  border: black;
+  border-style: solid;
+}
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+   
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 22px;
+    font-family: 'Pixabubble';
+}
+#snackbar.Ganador {
+    background-color: #059F2F;
+}
+#snackbar.Perdedor {
+    background-color: #FF0000;
+}
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+.animacion {
+  width:25%; 
+  animation-name: animacion;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+
+  -webkit-animation-name:animacion;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+}
+
+@-moz-keyframes animacion{  
+  0% { transform: rotate(0deg); transform: scale(50); }
+  25% { transform: rotate(90deg); transform: scale(0);}
+  50% { transform: rotate(180deg); transform: scale(50); }
+  75% { transform: rotate(270deg);}
+  100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes animacion {  
+  0% { transform: rotate(0deg); transform: scale(50); }
+  25% { transform: rotate(90deg); transform: scale(0);}
+  50% { transform: rotate(180deg); transform: scale(50); }
+  75% { transform: rotate(270deg);}
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes animacion {  
+  0% { transform: rotate(0deg);}
+  25% { transform: rotate(90deg);}
+  50% { transform: rotate(180deg); transform: scale(2);}
+  75% { transform: rotate(270deg);}
+  100% { transform: rotate(360deg);}
+}

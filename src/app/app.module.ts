@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSidenavModule} from '@angular/material/sidenav';
-//import {DialogModule} from 'primeng/dialog';
+import { DialogModule } from 'primeng/primeng';
 import { HttpModule } from '@angular/http';
 import  {MatExpansionModule } from '@angular/material/expansion';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -26,6 +26,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+
+
 
 //SERVICIOS
 import { MiHttpService } from './servicios/mi-http/mi-http.service'; 
@@ -58,9 +60,10 @@ import { InputJugadoresComponent } from './componentes/input-jugadores/input-jug
 import { SexoPipe } from './pipes/sexo.pipe';
 import { ReglasDeJuegosComponent } from './componentes/reglas-de-juegos/reglas-de-juegos.component';
 import { MezcladorDeColoresComponent } from './Componentes/mezclador-de-colores/mezclador-de-colores.component';
-import { MezcladorReglasComponent } from './Componentes/mezclador-reglas/mezclador-reglas.component';
 import { UsoServiciosComponent } from './componentes/uso-servicios/uso-servicios.component';
-import { FooterComponent } from './Componentes/footer/footer.component';
+import { FooterComponent } from './componentes/footer/footer.component';
+import { PptComponent } from './componentes/ppt/ppt.component';
+import { TatetiComponent } from './Componentes/tateti/tateti.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBk4330k8XRb1rw_CyadTDQyMtGaxbsbXg",
@@ -70,6 +73,7 @@ export const firebaseConfig = {
   storageBucket: "saladejuegos-d05fd.appspot.com",
   messagingSenderId: "524880656742"
 };
+
 
 @NgModule({
   declarations: [
@@ -98,9 +102,10 @@ export const firebaseConfig = {
     SexoPipe,
     ReglasDeJuegosComponent,
     MezcladorDeColoresComponent,
-    MezcladorReglasComponent,
     UsoServiciosComponent,
-    FooterComponent
+    FooterComponent,
+    PptComponent,
+    TatetiComponent
   ],
   imports: [
     BrowserModule,
@@ -114,7 +119,7 @@ export const firebaseConfig = {
     BrowserAnimationsModule,
     MatExpansionModule,
     MatDialogModule,
-    //DialogModule,
+    DialogModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
@@ -127,6 +132,6 @@ export const firebaseConfig = {
   ],
   providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService],
   bootstrap: [AppComponent],
-  entryComponents: [ReglasDeJuegosComponent, MezcladorReglasComponent] 
+  entryComponents: [ReglasDeJuegosComponent ] 
 })
 export class AppModule { }

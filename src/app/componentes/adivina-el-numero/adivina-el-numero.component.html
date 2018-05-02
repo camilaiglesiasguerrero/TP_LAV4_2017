@@ -10,7 +10,19 @@
 <h2></h2>
 <form name="juego">
 
-   <label>ingrese numero:  </label>  <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%"/>
+  <!--Reglas de juego-->
+<p-dialog header="Reglas del Juego: Adivina el número secreto" [(visible)]="display" [modal]="true" [responsive]="true" [width]="550" [minWidth]="200"  [style]="{'font-family':'Pixabubble','font-size':'18pt','background-color': '#FF8021'}">
+  <span>Clásico Tateti... Juego entre dos jugadores. El objetivo es formar tres imágenes en línea, ya sea horizontal, vertical o diagonalmente. El primer participante será la comedia; el segundo, la tragedia. ¿Quién ganará?
+      Para empezar a jugar cliqueá "Comenzar".  </span>
+      <p-footer>
+          <button type="button" class="btn btn-success" (click)="display=false" ><i class="fa fa-check-square"></i> Entendido!</button>
+      </p-footer>
+</p-dialog>
+
+<button type="button" class="btn btn-primary" (click)="showDialog()" pButton label="Show"><i class="fa fa-external-link-alt"></i>¿Cómo se juega?</button>
+<!--Fin reglas de juego-->
+  
+  <label>ingrese numero:  </label>  <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%"/>
     <h1>{{nuevoJuego.numeroIngresado}}  </h1>
  
     <h2 [hidden]="ocultarVerificar"><button  *ngIf="nuevoJuego.numeroSecreto!=0" (click)="verificar()" class="btn btn-success btn-lg">Verificar</button></h2>

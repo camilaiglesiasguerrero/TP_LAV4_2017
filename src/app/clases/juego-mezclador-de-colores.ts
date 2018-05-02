@@ -1,4 +1,5 @@
 import { Juego } from '../clases/juego';
+import { Jugador } from './jugador';
 
 export class MezcladorDeColores extends Juego {
     redSecreto: number;
@@ -18,11 +19,11 @@ export class MezcladorDeColores extends Juego {
     blueTopeSuma: boolean = false;
     blueTopeResta: boolean = true;
 
-    gano: boolean = false;
-
-    constructor(nombre?: string, gano?: boolean, jugador?:string) {
+    constructor(nombre?: string, gano?: boolean, jugador?:Jugador) {
         super("Mezclador de Colores",gano,jugador);
-     
+        this.jugador = new Jugador();
+        this.jugador.Traer();
+      
       }
 
     generarColor(){

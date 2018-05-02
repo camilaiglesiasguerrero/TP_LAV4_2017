@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Juego } from '../../clases/juego';
+import { AngularFireDatabase } from 'angularfire2/database';
+
+
 @Component({
   selector: 'app-agilidad-mas-listado',
   templateUrl: './agilidad-mas-listado.component.html',

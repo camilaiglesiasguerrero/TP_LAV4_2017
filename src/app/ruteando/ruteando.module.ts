@@ -24,6 +24,9 @@ import { JugadoresListadoComponent } from '../componentes/jugadores-listado/juga
 import { MezcladorDeColoresComponent } from '../Componentes/mezclador-de-colores/mezclador-de-colores.component';
 import { UsoServiciosComponent } from '../componentes/uso-servicios/uso-servicios.component';
 import { AnagramaComponent } from '../componentes/anagrama/anagrama.component';
+import { PptComponent } from '../componentes/ppt/ppt.component';
+import { TatetiComponent } from '../Componentes/tateti/tateti.component';
+
 
 
 // declaro donde quiero que se dirija
@@ -46,7 +49,11 @@ children:
       {path: 'AgilidadaMasListado' , component: AgilidadMasListadoComponent},
       {path: 'Agilidad' , component: AgilidadAritmeticaComponent},
       {path: 'Anagrama', component: AnagramaComponent},
-      {path: 'MezcladorDeColores', component: MezcladorDeColoresComponent}]
+      {path: 'MezcladorDeColores', component: MezcladorDeColoresComponent},
+      {path: 'PiedraPapelTijera',component: PptComponent},
+      {path: 'Tateti', component: TatetiComponent}
+     ]
+      
 },
 {path: 'servicio',component: UsoServiciosComponent},
 {path: '**' , component: ErrorComponent},

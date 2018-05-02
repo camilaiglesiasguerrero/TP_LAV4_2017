@@ -35,12 +35,12 @@ export class Jugador {
     {
         let jugador = JSON.parse(localStorage.getItem('Jugador'));
         if(jugador!=null){
-            this._email = jugador._email;
-            this._clave = jugador._clave;
+            this.email = jugador._email;
+            this.clave = jugador._clave;
         }
         else{
-            this._email = '';
-            this._clave = '';
+            this.email = '';
+            this.clave = '';
         }
         
     }

@@ -3,7 +3,7 @@ import { JuegoAgilidad } from '../../clases/juego-agilidad'
 import {Subscription} from "rxjs";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
-import {ReglasDeJuegosComponent} from '../reglas-de-juegos/reglas-de-juegos.component';
+
 
 @Component({
   selector: 'app-agilidad-aritmetica',
@@ -32,19 +32,7 @@ export class AgilidadAritmeticaComponent implements OnInit {
     console.info("Inicio agilidad");
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(ReglasDeJuegosComponent, {
-      height: '250px',
-      width: '600px',
-      position: {top: '80%', left: '30%'}
-
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    })
-  }
-
+  
   NuevoJuego() {    
     this.finDelJuego = false;
     this.nuevoJuego.GenerarCalculo();

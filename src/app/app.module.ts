@@ -58,7 +58,6 @@ import { MapaDeGoogleComponent } from './componentes/mapa-de-google/mapa-de-goog
 import { AgmCoreModule } from '@agm/core';
 import { InputJugadoresComponent } from './componentes/input-jugadores/input-jugadores.component';
 import { SexoPipe } from './pipes/sexo.pipe';
-import { ReglasDeJuegosComponent } from './componentes/reglas-de-juegos/reglas-de-juegos.component';
 import { MezcladorDeColoresComponent } from './Componentes/mezclador-de-colores/mezclador-de-colores.component';
 import { UsoServiciosComponent } from './componentes/uso-servicios/uso-servicios.component';
 import { FooterComponent } from './componentes/footer/footer.component';
@@ -100,7 +99,6 @@ export const firebaseConfig = {
     JugadoresListadoComponent,
     InputJugadoresComponent,
     SexoPipe,
-    ReglasDeJuegosComponent,
     MezcladorDeColoresComponent,
     UsoServiciosComponent,
     FooterComponent,
@@ -132,6 +130,6 @@ export const firebaseConfig = {
   ],
   providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService],
   bootstrap: [AppComponent],
-  entryComponents: [ReglasDeJuegosComponent ] 
+  entryComponents: [ ] 
 })
 export class AppModule { }

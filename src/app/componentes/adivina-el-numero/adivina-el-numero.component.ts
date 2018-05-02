@@ -10,7 +10,7 @@ import { JuegoAdivina } from '../../clases/juego-adivina'
 export class AdivinaElNumeroComponent implements OnInit {
  @Output() enviarJuego: EventEmitter<any>= new EventEmitter<any>();
 
-
+  display: boolean = false;
   nuevoJuego: JuegoAdivina;
   Mensajes:string;
   contador:number;
@@ -20,6 +20,10 @@ export class AdivinaElNumeroComponent implements OnInit {
     this.nuevoJuego = new JuegoAdivina();
     console.info("numero Secreto:",this.nuevoJuego.numeroSecreto);  
     this.ocultarVerificar=false;
+  }
+
+  showDialog(){
+    this.display = true;
   }
   generarnumero() {
     this.nuevoJuego.generarnumero();

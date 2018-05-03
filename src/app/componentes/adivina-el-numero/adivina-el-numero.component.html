@@ -1,18 +1,15 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!--app-menu></app-menu-->
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div style="text-align:center">
-  <h1>
-    {{nuevoJuego.nombre}}!
-  </h1>
- </div>
-<h2></h2>
-<form name="juego">
-
+<div style="background-color:#22735C;" class="titulo">
+    Adivina el número secreto
+  </div>
+  
+  <br>
+  
   <!--Reglas de juego-->
+  <div [hidden]='verifica' style="margin-left: 10px">
+
 <p-dialog header="Reglas del Juego: Adivina el número secreto" [(visible)]="display" [modal]="true" [responsive]="true" [width]="550" [minWidth]="200"  [style]="{'font-family':'Pixabubble','font-size':'18pt','background-color': '#FF8021'}">
-  <span>Clásico Tateti... Juego entre dos jugadores. El objetivo es formar tres imágenes en línea, ya sea horizontal, vertical o diagonalmente. El primer participante será la comedia; el segundo, la tragedia. ¿Quién ganará?
+  <span>Debés adivinar el número secreto elegido. Sólo podés pedir tres pistas y podés arriesgar hasta cinco veces.
+    ¿Una pista? Está entre 0 y 100.
       Para empezar a jugar cliqueá "Comenzar".  </span>
       <p-footer>
           <button type="button" class="btn btn-success" (click)="display=false" ><i class="fa fa-check-square"></i> Entendido!</button>
@@ -20,8 +17,29 @@
 </p-dialog>
 
 <button type="button" class="btn btn-primary" (click)="showDialog()" pButton label="Show"><i class="fa fa-external-link-alt"></i>¿Cómo se juega?</button>
+<button type="button" class="btn btn-warning" (click)='irA()'>Ir a todos los juegos</button>    
+<button type="button" class="btn btn-success" [hidden]="!ocultarVerificar" (click)='generarNumero()'>Comenzar</button>
+</div>
 <!--Fin reglas de juego-->
+  <br>
+
+  <div [hidden]='ocultarVerificar'>
+      <input [hidden]='seRindio' style='text-align:center; margin-left: 45%;' type="text" [(ngModel)]='nuevoJuego.numeroIngresado'>
+      <input [hidden]='!seRindio' style='text-align:center; margin-left: 45%; background-color:firebrick' type="text" [(ngModel)]='nuevoJuego.numeroSecreto'>
+      <ul [hidden]='seRindio' *ngFor="let num of nuevoJuego.ingresados">
+    <label>{{num.intentos}}) {{num.numero}}  {{num.pista}}</label>
+    </ul>
+    <div style="margin-left: 40%;">  
+      <br>
+      <button type="button" class="mi-btn2 btn-warning" (click)='PedirPista()'>Pedir pista</button>
+      <button type="button" class="mi-btn2 btn-success" (click)='verificar()'>Comprobar</button>
+      <button type="button" class="mi-btn2 btn-danger" (click)='Rendirse()'>Rendirse</button>
+    </div>
+</div>
   
+  
+ 
+<!--ACA
   <label>ingrese numero:  </label>  <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%"/>
     <h1>{{nuevoJuego.numeroIngresado}}  </h1>
  
@@ -30,10 +48,5 @@
     <h2><button *ngIf="nuevoJuego.numeroSecreto==0 " (click)="generarnumero()"  class="btn btn-info btn-lg">Nuevo número secreto</button></h2>
  
     <h2><p *ngIf="nuevoJuego.numeroSecreto!=0" ><i class="fa fa-spinner fa-spin"></i>Esperando que ingrese un número</p></h2>
-
-    <h3 [hidden]="!nuevoJuego.gano">usted adivino el número</h3>
-    <h3 [hidden]="nuevoJuego.gano">usted aún no gano </h3>
-
-
-</form>
+-->
 <div id="snackbar">{{Mensajes}}</div>

@@ -1,27 +1,29 @@
-import {Jugador} from './jugador';
 import { Juego } from './juego';
+import { Jugador } from './jugador';
 
-export class JuegoAgilidad extends Juego{
+export class JuegoAgilidadAritmetica extends Juego{
     numero1: number;
     operador: string;
     numero2: number;
     resultado: number;
     needCalculo: boolean = true;
-    respuesta: number;
+    respuesta: any;
+    calculo: string;
+    victoria: string;
     temporizador: any;
     nombre : string;
-    Gano: boolean;
     Jugador: string;
+    verifica: boolean = false;
 
     constructor(nombre?: string, gano?: boolean, jugador?:Jugador) {
         super("Adivina el número",gano,jugador); 
       }
       
         public GenerarCalculo():void{
-          this.Gano =false;
+        this.verifica = false;
+          this.gano =false;
           this.resultado = 0;
-          this.respuesta = 0;
-          this.temporizador = setTimeout (this.verificar,1000);
+          this.respuesta = '';
           this.numero1 = Math.floor(Math.random()*10+1);
           this.numero2 = Math.floor(Math.random()*10+1);
           let operadorN = Math.floor((Math.random()*4)+1);
@@ -44,7 +46,7 @@ export class JuegoAgilidad extends Juego{
                 this.resultado = this.numero1 - this.numero2;
                 break;
               case 3:
-                this.operador = '*';
+                this.operador = 'x';
                 this.resultado = this.numero1 * this.numero2;
                 break;
               case 4:
@@ -52,25 +54,29 @@ export class JuegoAgilidad extends Juego{
                 this.resultado = Math.round(this.numero1 / this.numero2);
                 break;
           }
-          console.log(this.numero1, this.operador, this.numero2, this.resultado);
+          //console.log(this.numero1, this.operador, this.numero2, this.resultado);
           this.needCalculo = false;
           
         }
 
     public verificar():boolean {
-        //console.log("estoy verificando en juego-agilidad");
+        this.calculo = this.numero1 + " " + this.operador + " " + this.numero2 + " = " + this.resultado;
+        
         if(this.resultado == this.respuesta)
         {
-            this.Gano = true;
+            this.victoria = "Ganaste";
+            this.gano = true;
             this.needCalculo = true;
             clearTimeout(this.temporizador);
+            
         }
         else
         {
-            this.Gano = false;
+            this.victoria = "Perdiste";
+            this.gano = false;
             this.needCalculo = false;
         }
         
-        return this.Gano; 
+        return this.gano; 
     }
 }

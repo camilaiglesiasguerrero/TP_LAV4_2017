@@ -1,46 +1,45 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!--app-menu></app-menu-->
-<!-- index.html -->
+<div style="background-color:#22735C;" class="titulo">
+  Agilidad   Aritmética
+</div>
 
+<br>
 
+<!--Reglas de juego-->
+<div style="margin-left: 10px">
+  <p-dialog header="Reglas del Juego: Agilidad aritmética" [(visible)]="display" [modal]="true" [responsive]="true" [width]="550" [minWidth]="200"  [style]="{'font-family':'Pixabubble','font-size':'18pt','background-color': '#FF8021'}">
+          <span>El juego consiste en resolver el cálculo proporcionado antes de que se termine el tiempo. <br>Para empezar a jugar hace clic en comenzar!  </span>
+              <p-footer>
+                  <button type="button" class="btn btn-success" (click)="display=false" ><i class="fa fa-check-square"></i> Entendido!</button>
+              </p-footer>
+  </p-dialog>
 
-    <h1>AGILIDAD ARITMETICA</h1>
-    
-    
-     
-    <br>        
-    <br>
-    <form class='form-inline formCenter' name="juego">
-    <h2 [hidden]="!ocultarVerificar"><button  (click)="NuevoJuego()"  class="btn btn-info btn-lg">COMENZAR</button></h2>  
- 
-   
-   <input [hidden]="ocultarVerificar" [(ngModel)]="nuevoJuego.numero1" name="numero1" type="text" class="form-control cuenta" align="middle" style="width:10%" readonly/>  
-   <input [hidden]="ocultarVerificar"[(ngModel)]="nuevoJuego.operador" name="operador" type="text" class="form-control cuenta" style="width:10%" readonly/>
-   <input [hidden]="ocultarVerificar"[(ngModel)]="nuevoJuego.numero2" name="numero2" type="text" class="form-control cuenta" style="width:10%" readonly/>
-   <input [hidden]="ocultarVerificar" value = '=' type="text" class="form-control cuenta" style="width:10%" readonly/>
-   <input [hidden]="ocultarVerificar" [(ngModel)]="nuevoJuego.respuesta" placeholder="Ingresá el resultado" name="respuesta" type="text" class="form-control respuesta" autofocus style="width:50%"/>
-</form>    
-   
- 
-  
+        <button type="button" class="btn btn-primary" (click)="showDialog()" pButton label="Show"><i class="fa fa-external-link-alt"></i>¿Cómo se juega?</button>
+        <button type="button" class="btn btn-warning" (click)='irA()'>Ir a todos los juegos</button>    
+        <button type="button" class="btn btn-success" [hidden]="!ocultarVerificar" (click)='NuevoJuego()'>Comenzar</button>
+        <p id='timer' class="tiempo" readonly >{{cronometro}}<i class="mili">{{cronoMili}}</i></p> 
+        <!--Fin reglas de juego-->
+</div>
+
 <br><br>
-<img src="../../assets/imagenes/relojArena.gif" [hidden]="ocultarVerificar" style='width: 3.5%'><i [hidden]="ocultarVerificar" class='timer'>  00:0{{Tiempo}}</i>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md">
-            <h2 [hidden]="ocultarVerificar">
-                <button [hidden]="ocultarVerificar" (click)="verificar()" class="btn btn-success btn-lg">Verificar</button>
-            </h2>
-  </div>
-
-        <div class="col-md">
-            <h2 [hidden]="!finDelJuego">
-                <button (click)="NuevoJuego()"  class="btn btn-info btn-lg">JUGAR DE NUEVO</button>
-            </h2>    
-        </div>
+<div  class="pizarron">
+  <div [hidden]=ocultarVerificar><br>
+    <i class=txt>{{nuevoJuego.numero1}}</i>
+    <i class=txt >{{nuevoJuego.operador}}</i>
+    <i class=txt >{{nuevoJuego.numero2}}</i>
+    <br><br>
+    <input (keydown)="keyDownFunction($event)" autofocus [(ngModel)]='nuevoJuego.respuesta' class=txt type="text" style='width:60%; opacity: 50%; background-color:rgba(0, 0, 0, 0.514); text-align:center; ' >
+    <br>
+    <div>
+      <i (click)="rendirse()" class="fa fa-flag" style="margin-left:20%; color:white; font-size: 40px;"></i>
+      <i (click)="verificar()" class="fa fa-check" style="margin-left:40%; color:white; font-size: 40px;"></i>
     </div>
 </div>
-    
 
-    <div [hidden]="ocultarVerificar" id="snackbar">{{Mensajes}}</div>
+<div [hidden]='!nuevoJuego.verifica'>
+  
+    <i class=txt>{{nuevoJuego.victoria}}</i>
+    <br><br>
+    <input readonly [(ngModel)]='nuevoJuego.calculo' class=txt type="text" style='width:60%; opacity: 50%; background-color:rgba(0, 0, 0, 0.514); text-align:center; ' >
+</div>
+

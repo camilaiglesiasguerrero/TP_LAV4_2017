@@ -1,4 +1,4 @@
-
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
 import { JuegoAdivina } from '../../clases/juego-adivina'
 
@@ -15,67 +15,71 @@ export class AdivinaElNumeroComponent implements OnInit {
   Mensajes:string;
   contador:number;
   ocultarVerificar:boolean;
+  seRindio: boolean = false;
  
-  constructor() { 
+  constructor(private route: ActivatedRoute,
+    private router: Router) { 
     this.nuevoJuego = new JuegoAdivina();
-    console.info("numero Secreto:",this.nuevoJuego.numeroSecreto);  
-    this.ocultarVerificar=false;
+    //console.info("numero Secreto:",this.nuevoJuego.numeroSecreto);  
+    this.ocultarVerificar=true;
   }
 
   showDialog(){
     this.display = true;
   }
-  generarnumero() {
-    this.nuevoJuego.generarnumero();
-    this.contador=0;
+
+  irA(){
+    this.router.navigate(['/Juegos']);
   }
+
+  generarNumero() {
+    this.nuevoJuego.generarnumero();
+    this.ocultarVerificar = false;
+    this.contador=0;
+    this.nuevoJuego.contadorPistas = 0;
+  }
+
   verificar()
   {
+    if(this.nuevoJuego.contadorIntentos == 5)
+      this.ocultarVerificar = true;
+
     this.contador++;
-    this.ocultarVerificar=true;
-    console.info("numero Secreto:",this.nuevoJuego.gano);  
     if (this.nuevoJuego.verificar()){
       
       this.enviarJuego.emit(this.nuevoJuego);
-      this.MostarMensaje("Sos un Genio!!!",true);
+      this.MostrarMensaje("Sos un Genio!!!",true);
       this.nuevoJuego.numeroSecreto=0;
 
     }else{
-
-      let mensaje:string;
-      switch (this.contador) {
-        case 1:
-          mensaje="No, intento fallido, animo";
-          break;
-          case 2:
-          mensaje="No,Te estaras Acercando???";
-          break;
-          case 3:
-          mensaje="No es, Yo crei que la tercera era la vencida.";
-          break;
-          case 4:
-          mensaje="No era el  "+this.nuevoJuego.numeroIngresado;
-          break;
-          case 5:
-          mensaje=" intentos y nada.";
-          break;
-          case 6:
-          mensaje="Afortunado en el amor";
-          break;
       
-        default:
-            mensaje="Ya le erraste "+ this.contador+" veces";
-          break;
-      }
-      this.MostarMensaje("#"+this.contador+" "+mensaje+" ayuda :"+this.nuevoJuego.retornarAyuda());
-     
-
+    
     }
     console.info("numero Secreto:",this.nuevoJuego.gano);  
   }  
 
-  MostarMensaje(mensaje:string="este es el mensaje",ganador:boolean=false) {
-    this.Mensajes=mensaje;    
+  Rendirse()
+  {
+    this.seRindio = true;
+    this.verificar();
+    this.nuevoJuego.gano = false;
+  }
+  PedirPista()
+  {
+    if(this.contador == 0 )
+      this.MostrarMensaje("Todavía no podés pedir pista. Jugá al menos una vez",false);
+    else
+    {
+      this.nuevoJuego.contadorPistas ++;
+      if(this.nuevoJuego.contadorPistas < 4)
+        this.MostrarMensaje(this.Mensajes = this.nuevoJuego.retornarAyuda(), false);
+      else
+        this.MostrarMensaje("¡No te quedan más pistas!",false);
+    }
+  }
+
+  MostrarMensaje(mensaje:string="¡No te quedan más pistas!",ganador:boolean=false) {
+    this.Mensajes = mensaje;
     var x = document.getElementById("snackbar");
     if(ganador)
       {

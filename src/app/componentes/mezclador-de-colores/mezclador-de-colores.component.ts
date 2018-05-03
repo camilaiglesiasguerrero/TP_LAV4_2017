@@ -12,14 +12,14 @@ export class MezcladorDeColoresComponent implements OnInit {
   display: boolean = false;
   mezclador : MezcladorDeColores;
   empiezaElJuego : boolean = false;
-  minutos: number = 0;
-  segundos: number = 0;
-  milisegundos: number = 0;
   verifica: boolean = false;
   resultado: string;
   color: string;
   val:number;
   timer: any;
+  minutos: number = 0;
+  segundos: number = 0;
+  milisegundos: number = 0;
   cronometro: string;
   cronoMili: string;
 

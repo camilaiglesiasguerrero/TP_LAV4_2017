@@ -1,8 +1,8 @@
-import { Component, OnInit , Inject, Input,Output,EventEmitter} from '@angular/core';
-import { JuegoAgilidad } from '../../clases/juego-agilidad'
+import { Component, OnInit , Inject, Input,Output,EventEmitter } from '@angular/core';
+import { JuegoAgilidadAritmetica } from '../../clases/juego-agilidad-aritmetica';
 import {Subscription} from "rxjs";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 
 @Component({
@@ -13,23 +13,38 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 
 export class AgilidadAritmeticaComponent implements OnInit {
   Mensajes: string;
+  display : boolean = false;
   
   @Output() 
   enviarJuego :EventEmitter<any>= new EventEmitter<any>();
-  nuevoJuego : JuegoAgilidad;
+
+  nuevoJuego : JuegoAgilidadAritmetica;
   ocultarVerificar: boolean;
-  Tiempo: number;
-  repetidor:any;
+  repetidor: any;
+  segundos: number = 0;
+  milisegundos: number = 0;
+  cronometro: string;
+  cronoMili: string;
   finDelJuego: boolean = false;
+  
   private subscription: Subscription;
   ngOnInit() {
   }
   
-   constructor(public dialog: MatDialog) {
+  constructor(private route: ActivatedRoute,
+    private router: Router) { 
      this.ocultarVerificar=true;
-     this.Tiempo=5; 
-    this.nuevoJuego = new JuegoAgilidad();
-    console.info("Inicio agilidad");
+    this.nuevoJuego = new JuegoAgilidadAritmetica(); 
+    this.cronometro = '00:10.';
+    this.cronoMili = '00';
+  }
+  
+  showDialog() {
+    this.display = true;
+  }
+
+  irA(){
+    this.router.navigate(['/Juegos']);
   }
 
   
@@ -37,53 +52,60 @@ export class AgilidadAritmeticaComponent implements OnInit {
     this.finDelJuego = false;
     this.nuevoJuego.GenerarCalculo();
     this.ocultarVerificar=false;
-    this.Tiempo = 5;
-  
-    this.repetidor = setInterval(()=>{ 
-      
-      this.Tiempo--;
-      
-      //console.log("llego", this.Tiempo);
-      if(this.Tiempo==0 ) {
-        clearInterval(this.repetidor);
-        this.verificar();
-        //this.ocultarVerificar=true;
-        this.Tiempo=5;
-      }
-      }, 900);
+    this.segundos = 10;
+    this.milisegundos = 100;
+    clearInterval(this.repetidor);
 
+    this.repetidor = setInterval( ()=> { 
+      this.cronometro = '00:' + (this.segundos <= 9 ? '0' + this.segundos.toString() : this.segundos.toString()) + '.';
+      this.cronoMili = this.milisegundos <= 9 ? '0' + this.milisegundos.toString() : this.milisegundos.toString();
+      this.milisegundos-=1;
+      if( this.milisegundos == 0)
+      {
+        this.milisegundos = 99;
+        if(this.segundos != 0)
+        {  
+          this.segundos -=1;
+          if(this.segundos == 5)
+          {
+            var x = document.getElementById("timer");
+            x.className = "pocoTiempo";
+          }
+        }
+        else
+        {
+          this.cronoMili = '00';
+          var x = document.getElementById("timer");
+          clearInterval(this.repetidor);
+          this.verificar();
+        }
+      }
+    }
+      , 10);
+
+  }
+
+  keyDownFunction(event) {
+    if(event.keyCode == 13) {
+      this.verificar();
+    }
+  }
+
+  rendirse()
+  {
+    this.nuevoJuego.respuesta = -99;
+    this.verificar();
   }
 
   verificar()
   {
+    this.nuevoJuego.verifica = true;
     this.ocultarVerificar=false;
     clearInterval(this.repetidor);
-    if (this.nuevoJuego.verificar()){
-      //console.log("estoy verificando en agilidad component");
-      this.enviarJuego.emit(this.nuevoJuego);
-      this.MostrarMensaje("Ganaste",true);
-    }
-    else{
-      this.MostrarMensaje("No ganaste, intentalo de nuevo",false);
-    }
+    this.enviarJuego.emit(this.nuevoJuego);
+    this.nuevoJuego.verificar();
+    this.ocultarVerificar = true;
+    
   }  
-
-  MostrarMensaje(mensaje:string="mensaje",ganador:boolean=false) {
-    this.Mensajes=mensaje;    
-    var x = document.getElementById("snackbar");
-    if(ganador)
-      {
-        x.className = "show Ganador";
-      }else{
-        x.className = "show Perdedor";
-      }
-    //var modelo=this;
-    setTimeout(function(){ 
-      x.className = x.className.replace("show","");
-      //modelo.ocultarVerificar=true;
-     }, 5000);
-    console.info("objeto",x);
-    this.finDelJuego = true;
-   }
 }
 

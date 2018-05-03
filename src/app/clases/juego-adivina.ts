@@ -61,13 +61,13 @@ export class JuegoAdivina extends Juego {
           case 3:
             if(this.numeroSecreto % 2 == 0)
             {
-              this.pista += "El número es par";
-              this.ingresados[num].pista += " " + this.pista;
+              this.pista = "El número es par";
+              this.ingresados[num].pista = " " + this.pista;
             }
             else 
             {
-              this.pista += "El número es impar";
-              this.ingresados[num].pista += " " + this.pista;
+              this.pista = "El número es impar";
+              this.ingresados[num].pista  = " " + this.pista;
             } 
             break;
           default:

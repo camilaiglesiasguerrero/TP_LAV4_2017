@@ -68,8 +68,9 @@ export class AdivinaElNumeroComponent implements OnInit {
   {
     if(this.contador == 0 )
       this.MostrarMensaje("Todavía no podés pedir pista. Jugá al menos una vez",false);
-    else
-    {
+    else if(this.contador == this.nuevoJuego.contadorPistas)
+      this.MostrarMensaje("Una pista, una jugada. Arriesgá una vez más si querés otra pista");
+    else{
       this.nuevoJuego.contadorPistas ++;
       if(this.nuevoJuego.contadorPistas < 4)
         this.MostrarMensaje(this.Mensajes = this.nuevoJuego.retornarAyuda(), false);
@@ -93,7 +94,6 @@ export class AdivinaElNumeroComponent implements OnInit {
       modelo.ocultarVerificar=false;
      }, 3000);
     console.info("objeto",x);
-  
    }  
   ngOnInit() {
   }

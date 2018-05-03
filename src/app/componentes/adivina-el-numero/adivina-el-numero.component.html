@@ -27,7 +27,7 @@
       <input [hidden]='seRindio' style='text-align:center; margin-left: 45%;' type="text" [(ngModel)]='nuevoJuego.numeroIngresado'>
       <input [hidden]='!seRindio' style='text-align:center; margin-left: 45%; background-color:firebrick' type="text" [(ngModel)]='nuevoJuego.numeroSecreto'>
       <ul [hidden]='seRindio' *ngFor="let num of nuevoJuego.ingresados">
-    <label>{{num.intentos}}) {{num.numero}}  {{num.pista}}</label>
+    <a>{{num.intentos}}) {{num.numero}}  {{num.pista}}</a>
     </ul>
     <div style="margin-left: 40%;">  
       <br>
@@ -36,9 +36,9 @@
       <button type="button" class="mi-btn2 btn-danger" (click)='Rendirse()'>Rendirse</button>
     </div>
 </div>
-  
-  
- 
+<div [hidden]='!ocultarVerificar' >
+
+</div>  
 <!--ACA
   <label>ingrese numero:  </label>  <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%"/>
     <h1>{{nuevoJuego.numeroIngresado}}  </h1>

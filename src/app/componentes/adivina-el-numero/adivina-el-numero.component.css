@@ -288,6 +288,12 @@ border: black;
 border-style: solid;
 }
 
+.mje{
+  color:red;
+  font-size: 70px;
+  text-align: center;
+  font-family: 'olivier_demo';
+}
 
    
 .container-fluid {

@@ -8,8 +8,7 @@
   <div [hidden]='verifica' style="margin-left: 10px">
 
 <p-dialog header="Reglas del Juego: Adivina el número secreto" [(visible)]="display" [modal]="true" [responsive]="true" [width]="550" [minWidth]="200"  [style]="{'font-family':'Pixabubble','font-size':'18pt','background-color': '#FF8021'}">
-  <span>Debés adivinar el número secreto elegido. Sólo podés pedir tres pistas y podés arriesgar hasta cinco veces.
-    ¿Una pista? Está entre 0 y 100.
+  <span>Debés adivinar el número secreto elegido. El mismo será de cuatro dígitos distintos y puede comenzar con 0. Tenés 10 rondas para averiguarlo. En cada vuelta se te dará una pista que indicará cuántos números tenés ubicados en posición correcta (bien), cuántos en posición incorrecta (regular) y cuántos están mal.
       Para empezar a jugar cliqueá "Comenzar".  </span>
       <p-footer>
           <button type="button" class="btn btn-success" (click)="display=false" ><i class="fa fa-check-square"></i> Entendido!</button>
@@ -18,27 +17,31 @@
 
 <button type="button" class="btn btn-primary" (click)="showDialog()" pButton label="Show"><i class="fa fa-external-link-alt"></i>¿Cómo se juega?</button>
 <button type="button" class="btn btn-warning" (click)='irA()'>Ir a todos los juegos</button>    
-<button type="button" class="btn btn-success" [hidden]="!ocultarVerificar" (click)='generarNumero()'>Comenzar</button>
+<button type="button" class="btn btn-success" [hidden]="enJuego" (click)='generarNumero()'>Comenzar</button>
 </div>
 <!--Fin reglas de juego-->
   <br>
 
   <div [hidden]='ocultarVerificar'>
-      <input [hidden]='seRindio' style='text-align:center; margin-left: 45%;' type="text" [(ngModel)]='nuevoJuego.numeroIngresado'>
-      <input [hidden]='!seRindio' style='text-align:center; margin-left: 45%; background-color:firebrick' type="text" [(ngModel)]='nuevoJuego.numeroSecreto'>
-      <ul [hidden]='seRindio' *ngFor="let num of nuevoJuego.ingresados">
-    <a>{{num.intentos}}) {{num.numero}}  {{num.pista}}</a>
-    </ul>
-    <div style="margin-left: 40%;">  
+      <input autofocus [hidden]='seRindio' (keydown)="keyDownFunction($event)" style='text-align:center; margin-left: 42.5%;' type="text" [(ngModel)]='nuevoJuego.numeroIngresado'>
+      <input [hidden]='!seRindio' style='text-align:center; margin-left: 42.5%; background-color:firebrick' type="text" [(ngModel)]='nuevoJuego.numeroSecreto'>
+    <div style="margin-left: 42.5%;">  
       <br>
-      <button type="button" class="mi-btn2 btn-warning" (click)='PedirPista()'>Pedir pista</button>
-      <button type="button" class="mi-btn2 btn-success" (click)='verificar()'>Comprobar</button>
-      <button type="button" class="mi-btn2 btn-danger" (click)='Rendirse()'>Rendirse</button>
+      <button type="button" class="mi-btn2 btn-success" [hidden]='seRindio || gano' (click)='verificar()'>Comprobar</button>
+      <button type="button" class="mi-btn2 btn-danger" [hidden]='seRindio || gano' (click)='Rendirse()'>Rendirse</button>
     </div>
-</div>
-<div [hidden]='!ocultarVerificar' >
-
+    
+<div class="mje" [hidden]='!seRindio' >
+  <label>Perdiste</label>
 </div>  
+<div class="mje" style='color:green' [hidden]='!gano' >
+  <label>Ganaste</label>
+</div>  
+<div>
+    <ul [hidden]='seRindio || gano' *ngFor="let num of nuevoJuego.ingresados">
+      <a>{{num.intentos}}) {{num.numero}}  {{num.pista}}</a>
+    </ul>
+</div>
 <!--ACA
   <label>ingrese numero:  </label>  <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%"/>
     <h1>{{nuevoJuego.numeroIngresado}}  </h1>

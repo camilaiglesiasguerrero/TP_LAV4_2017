@@ -13,10 +13,11 @@ export class AdivinaElNumeroComponent implements OnInit {
   display: boolean = false;
   nuevoJuego: JuegoAdivina;
   Mensajes:string;
-  contador:number;
   ocultarVerificar:boolean;
   seRindio: boolean = false;
- 
+  gano: boolean = false;
+  enJuego:boolean = false;
+
   constructor(private route: ActivatedRoute,
     private router: Router) { 
     this.nuevoJuego = new JuegoAdivina();
@@ -33,49 +34,73 @@ export class AdivinaElNumeroComponent implements OnInit {
   }
 
   generarNumero() {
+    this.enJuego = true;
+    this.seRindio = false;
+    this.gano = false;
+    this.enJuego = true;
+    
     this.nuevoJuego.generarnumero();
     this.ocultarVerificar = false;
-    this.contador=0;
     this.nuevoJuego.contadorPistas = 0;
   }
 
   verificar()
   {
-    if(this.nuevoJuego.contadorIntentos == 5)
-      this.ocultarVerificar = true;
+    while(this.nuevoJuego.arriesga.length > 0)
+      this.nuevoJuego.arriesga.pop(); 
 
-    this.contador++;
+      for(var i=0;i<this.nuevoJuego.numeroIngresado.toString().length;i++) 
+      {
+        this.nuevoJuego.arriesga.push(parseInt(this.nuevoJuego.numeroIngresado[i]));
+      }
+      
+    if(this.nuevoJuego.numeroIngresado.toString().length != 4 )
+    {
+      this.MostrarMensaje("Recordá que debés seleccionar cuatro dígitos distintos");
+    }else if(this.nuevoJuego.arriesga[0] == this.nuevoJuego.arriesga[1] 
+       || this.nuevoJuego.arriesga[0] == this.nuevoJuego.arriesga[2]
+       || this.nuevoJuego.arriesga[0] == this.nuevoJuego.arriesga[3]
+       || this.nuevoJuego.arriesga[0] == this.nuevoJuego.arriesga[4]
+       || this.nuevoJuego.arriesga[1] == this.nuevoJuego.arriesga[2]
+       || this.nuevoJuego.arriesga[1] == this.nuevoJuego.arriesga[3]
+       || this.nuevoJuego.arriesga[1] == this.nuevoJuego.arriesga[4]
+       || this.nuevoJuego.arriesga[2] == this.nuevoJuego.arriesga[3]
+       || this.nuevoJuego.arriesga[2] == this.nuevoJuego.arriesga[4]
+       || this.nuevoJuego.arriesga[3] == this.nuevoJuego.arriesga[4]
+      )
+      this.MostrarMensaje("Recordá que debés seleccionar cuatro dígitos distintos");
+  else
+  {
+    
     if (this.nuevoJuego.verificar()){
       
       this.enviarJuego.emit(this.nuevoJuego);
-      this.MostrarMensaje("Sos un Genio!!!",true);
+      //this.MostrarMensaje("Sos un Genio!!!",true);
+      this.gano = true;
       this.nuevoJuego.numeroSecreto=0;
+      this.enJuego = false;
 
     }else{
-      
-    
+      if(this.nuevoJuego.contadorIntentos == 10)
+      {
+        this.seRindio = true;
+        this.enJuego = false;
+      } 
     }
     console.info("numero Secreto:",this.nuevoJuego.gano);  
-  }  
+  }
+}  
 
   Rendirse()
   {
     this.seRindio = true;
-    this.verificar();
     this.nuevoJuego.gano = false;
+    this.enJuego = false;
   }
-  PedirPista()
-  {
-    if(this.contador == 0 )
-      this.MostrarMensaje("Todavía no podés pedir pista. Jugá al menos una vez",false);
-    else if(this.contador == this.nuevoJuego.contadorPistas)
-      this.MostrarMensaje("Una pista, una jugada. Arriesgá una vez más si querés otra pista");
-    else{
-      this.nuevoJuego.contadorPistas ++;
-      if(this.nuevoJuego.contadorPistas < 4)
-        this.MostrarMensaje(this.Mensajes = this.nuevoJuego.retornarAyuda(), false);
-      else
-        this.MostrarMensaje("¡No te quedan más pistas!",false);
+  
+  keyDownFunction(event) {
+    if(event.keyCode == 13) {
+      this.verificar();
     }
   }
 
@@ -93,7 +118,7 @@ export class AdivinaElNumeroComponent implements OnInit {
       x.className = x.className.replace("show", "");
       modelo.ocultarVerificar=false;
      }, 3000);
-    console.info("objeto",x);
+   // console.info("objeto",x);
    }  
   ngOnInit() {
   }

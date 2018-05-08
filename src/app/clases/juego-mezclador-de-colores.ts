@@ -19,11 +19,9 @@ export class MezcladorDeColores extends Juego {
     blueTopeSuma: boolean = false;
     blueTopeResta: boolean = true;
 
-    constructor(nombre?: string, gano?: boolean, jugador?:Jugador) {
-        super("Mezclador de Colores",gano,jugador);
-        this.jugador = new Jugador();
-        this.jugador.Traer();
-      
+    constructor(nombre?: string, gano?: boolean) {
+        super("Mezclador de Colores",gano);
+        
       }
 
     generarColor(){

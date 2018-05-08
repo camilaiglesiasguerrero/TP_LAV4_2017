@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { MezcladorDeColores } from '../../clases/juego-mezclador-de-colores';
 import { NgStyle } from '@angular/common';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-
+import { RankingService } from '../../servicios/ranking.service';
 @Component({
   selector: 'app-mezclador-de-colores',
   templateUrl: './mezclador-de-colores.component.html',
   styleUrls: ['./mezclador-de-colores.component.css']
 })
 export class MezcladorDeColoresComponent implements OnInit {
+  rankingS:RankingService;
   display: boolean = false;
   mezclador : MezcladorDeColores;
   empiezaElJuego : boolean = false;
@@ -24,12 +25,13 @@ export class MezcladorDeColoresComponent implements OnInit {
   cronoMili: string;
 
   constructor(private route: ActivatedRoute,
-    private router: Router){
+    private router: Router, private servicioRanking:RankingService){
     this.mezclador = new MezcladorDeColores();
     this.mezclador.elColorSecreto = '#000000';
     this.mezclador.elColorRespuesta = '#000000';  
     this.cronometro = '00:00.';
     this.cronoMili = '0';
+    this.rankingS = servicioRanking;
   }
 
   ngOnInit() {
@@ -84,6 +86,7 @@ export class MezcladorDeColoresComponent implements OnInit {
       this.color = '#FF0000';
     }
     
+    this.rankingS.GuardarDatos(this.mezclador);
   }
 
   restaurarValores(){

@@ -15,8 +15,8 @@ export class JuegoAgilidadAritmetica extends Juego{
     Jugador: string;
     verifica: boolean = false;
 
-    constructor(nombre?: string, gano?: boolean, jugador?:Jugador) {
-        super("Adivina el número",gano,jugador); 
+    constructor(nombre?: string, gano?: boolean) {
+        super("Agilidad Aritmética",gano); 
       }
       
         public GenerarCalculo():void{

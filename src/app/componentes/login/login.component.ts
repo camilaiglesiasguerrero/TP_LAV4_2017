@@ -59,6 +59,7 @@ Registrarse(){
 }  
 
   ngOnInit() {
+    
   }
 
   

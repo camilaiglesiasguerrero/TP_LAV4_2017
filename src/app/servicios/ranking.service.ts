@@ -22,9 +22,9 @@ export class RankingService {
      //return null;
   }
 
-  public GuardarDatos(juego: Juego)
+  public GuardarDatos(juego: Juego,p1?:boolean,p2?:boolean)
   {
-    this.miHttp.Insert(juego);
+    this.miHttp.Insert(juego,p1,p2);
   }
 
 }

@@ -51,11 +51,22 @@ export class MiHttpService {
     .catch( this.handleError );
   }
 
-  Insert(juego:Juego){ 
+  Insert(juego:Juego,p1?:boolean,p2?:boolean){ 
+    
     let data = new URLSearchParams();
     data.append('jugador',juego.jugador.email);
     data.append('juego', juego.juego);
-    data.append('gano', juego.gano.toString());
+    if(juego.gano && juego.juego != "TaTeTi")
+      data.append('gano', '¡Triunfo!');
+    else if(!juego.gano && juego.juego != "TaTeTi")
+      data.append('gano','¡Derrota!')
+    else if(juego.juego == "TaTeTi" && p1 && !p2 )
+      data.append('gano','¡Jugador 1!');
+    else if(juego.juego == "TaTeTi" && !p1 && p2 )
+      data.append('gano','¡Jugador 2!');
+    else if(juego.juego == "TaTeTi" && p1 && p2 )
+      data.append('gano','¡Empate!');
+      
     data.append('fecha', juego.fecha);
     
     //console.info(this.url, data);    

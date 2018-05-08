@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoTateti } from '../../clases/juego-tateti';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { RankingService } from '../../servicios/ranking.service';
 
 @Component({
   selector: 'app-tateti',
@@ -8,6 +9,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./tateti.component.css']
 })
 export class TatetiComponent implements OnInit {
+rankingS: RankingService;
 ganador1: boolean = false;
 ganador2: boolean = false;
 display: boolean = false;
@@ -17,10 +19,11 @@ yaJugo: boolean = false;
 contador: number;
 
 constructor(private route: ActivatedRoute,
-  private router: Router) { 
+  private router: Router, private servicioRanking: RankingService) { 
   this.tateti = new JuegoTateti();
   this.yaJugo = false;
   this.contador = 0;
+  this.rankingS = servicioRanking;
  }
 
   ngOnInit() {
@@ -38,11 +41,13 @@ LimpiarGrilla(){
   this.tateti.Limpiar();
 }
 Cargar(num){
-  this.contador++;
+  
   this.yaJugo = true;
   if(this.tateti.grilla[num].conValor == "false")
   {
+    this.contador++;
     this.tateti.Jugada(num);
+    console.log(this.contador);
     var x = document.getElementById(num.toString());
     if(this.tateti.turno)
       {
@@ -61,7 +66,7 @@ Cargar(num){
      }, 3000);
   }
 
-  if(this.tateti.gano)
+  if(this.tateti.gano){
     if(!this.tateti.turno)
     {
         this.ganador1 = true;
@@ -70,11 +75,15 @@ Cargar(num){
     {
       this.ganador2 = true;
     }
-    if(this.contador==9 && (this.ganador1==false && this.ganador2 == false))
-    {
+    this.rankingS.GuardarDatos(this.tateti,this.ganador1,this.ganador2);
+  }
+  else if(this.contador==9 && (this.ganador1==false && this.ganador2 == false))
+  {  
       this.ganador1 = true;
       this.ganador2 = true;
-    }  
+      
+  this.rankingS.GuardarDatos(this.tateti,this.ganador1,this.ganador2);
+  } 
 }
 
   irA(){

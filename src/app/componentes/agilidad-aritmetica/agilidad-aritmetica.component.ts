@@ -3,7 +3,7 @@ import { JuegoAgilidadAritmetica } from '../../clases/juego-agilidad-aritmetica'
 import {Subscription} from "rxjs";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-
+import { RankingService  } from '../../servicios/ranking.service';
 
 @Component({
   selector: 'app-agilidad-aritmetica',
@@ -14,6 +14,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class AgilidadAritmeticaComponent implements OnInit {
   Mensajes: string;
   display : boolean = false;
+  rankingS: RankingService;
   
   @Output() 
   enviarJuego :EventEmitter<any>= new EventEmitter<any>();
@@ -32,11 +33,12 @@ export class AgilidadAritmeticaComponent implements OnInit {
   }
   
   constructor(private route: ActivatedRoute,
-    private router: Router) { 
+    private router: Router, private servicioRanking:RankingService) { 
      this.ocultarVerificar=true;
     this.nuevoJuego = new JuegoAgilidadAritmetica(); 
     this.cronometro = '00:10.';
     this.cronoMili = '00';
+    this.rankingS = servicioRanking;
   }
   
   showDialog() {
@@ -102,10 +104,10 @@ export class AgilidadAritmeticaComponent implements OnInit {
     this.nuevoJuego.verifica = true;
     this.ocultarVerificar=false;
     clearInterval(this.repetidor);
-    this.enviarJuego.emit(this.nuevoJuego);
-    this.nuevoJuego.verificar();
-    this.ocultarVerificar = true;
-    
+    this.nuevoJuego.gano = this.nuevoJuego.verificar();
+    console.info(this.nuevoJuego);
+    this.rankingS.GuardarDatos(this.nuevoJuego);
+    this.ocultarVerificar = true;    
   }  
 }
 

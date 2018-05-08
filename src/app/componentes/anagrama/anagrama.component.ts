@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { JuegoAnagrama } from '../../clases/juego-anagrama';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { RankingService } from '../../servicios/ranking.service';
 
 @Component({
   selector: 'app-anagrama',
@@ -23,12 +24,14 @@ export class AnagramaComponent implements OnInit {
   val:number;
   seRindio: boolean = false;
   laPalabra: string;
+  rankingS:RankingService;
 
   constructor(private route: ActivatedRoute,
-    private router: Router) { 
+    private router: Router, private servicioRanking:RankingService) { 
     this.anagrama = new JuegoAnagrama();
     this.cronometro = '00:00.';
     this.cronoMili = '0';
+    this.rankingS = servicioRanking;
    }
 
   ngOnInit() {
@@ -67,20 +70,34 @@ export class AnagramaComponent implements OnInit {
     
     
   }
+  
+  keyDownFunction(event) {
+    if(event.keyCode == 13) {
+      this.Verificar();
+    }
+  }
 
   Verificar(){
     if(this.anagrama.palabraResultado != '' && this.anagrama.palabraResultado != null)
     {
-      
       clearInterval(this.timer);
       if(!this.anagrama.verificar())
-      this.seRindio = true;
+      {  
+        this.Rendirse();
+      }
+      else
+      {
+        this.anagrama.gano = true;
+        this.servicioRanking.GuardarDatos(this.anagrama);
+      }
     }
   }
 
   Rendirse(){
     clearInterval(this.timer);
     this.seRindio = true;
+    this.anagrama.gano = false;
+    this.servicioRanking.GuardarDatos(this.anagrama);
   }
   Mezclar(){
     this.anagrama.Mezclar(this.anagrama.arrayOrdenado, this.anagrama.palabraSecreta);

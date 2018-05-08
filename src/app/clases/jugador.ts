@@ -22,7 +22,7 @@ export class Jugador {
     }
 
     public Guardar()
-    {
+    { 
        localStorage.setItem('Jugador',JSON.stringify(this));
     }
 

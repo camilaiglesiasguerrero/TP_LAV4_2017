@@ -1,6 +1,8 @@
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
 import { JuegoAdivina } from '../../clases/juego-adivina'
+import { Juego } from '../../clases/juego';
+import { RankingService } from '../../servicios/ranking.service';
 
 @Component({
   selector: 'app-adivina-el-numero',
@@ -9,7 +11,7 @@ import { JuegoAdivina } from '../../clases/juego-adivina'
 })
 export class AdivinaElNumeroComponent implements OnInit {
  @Output() enviarJuego: EventEmitter<any>= new EventEmitter<any>();
-
+  rankingS:RankingService;
   display: boolean = false;
   nuevoJuego: JuegoAdivina;
   Mensajes:string;
@@ -17,12 +19,14 @@ export class AdivinaElNumeroComponent implements OnInit {
   seRindio: boolean = false;
   gano: boolean = false;
   enJuego:boolean = false;
+  elJuego: Juego;
 
   constructor(private route: ActivatedRoute,
-    private router: Router) { 
+    private router: Router, private servicioRanking:RankingService) { 
     this.nuevoJuego = new JuegoAdivina();
     //console.info("numero Secreto:",this.nuevoJuego.numeroSecreto);  
     this.ocultarVerificar=true;
+    this.rankingS = servicioRanking;
   }
 
   showDialog(){
@@ -72,19 +76,21 @@ export class AdivinaElNumeroComponent implements OnInit {
   else
   {
     
-    if (this.nuevoJuego.verificar()){
-      
-      this.enviarJuego.emit(this.nuevoJuego);
-      //this.MostrarMensaje("Sos un Genio!!!",true);
+    if (this.nuevoJuego.verificar()){      
       this.gano = true;
       this.nuevoJuego.numeroSecreto=0;
       this.enJuego = false;
-
+      this.nuevoJuego.gano = true;
+      
+      this.rankingS.GuardarDatos(this.nuevoJuego);
     }else{
       if(this.nuevoJuego.contadorIntentos == 10)
       {
         this.seRindio = true;
         this.enJuego = false;
+        this.nuevoJuego.gano = false;
+        //console.info(this.nuevoJuego);
+        this.rankingS.GuardarDatos(this.nuevoJuego);
       } 
     }
     console.info("numero Secreto:",this.nuevoJuego.gano);  
@@ -96,6 +102,9 @@ export class AdivinaElNumeroComponent implements OnInit {
     this.seRindio = true;
     this.nuevoJuego.gano = false;
     this.enJuego = false;
+    this.nuevoJuego.gano = false;
+    console.info(this.nuevoJuego);
+    this.rankingS.GuardarDatos(this.nuevoJuego);
   }
   
   keyDownFunction(event) {

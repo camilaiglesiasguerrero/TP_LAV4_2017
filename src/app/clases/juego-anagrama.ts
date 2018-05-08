@@ -10,8 +10,8 @@ export class JuegoAnagrama extends Juego {
     display: boolean = false;
 
 
-    constructor(nombre?: string, gano?: boolean, jugador?:Jugador) {
-        super("Anagrama",gano,jugador);
+    constructor(nombre?: string, gano?: boolean) {
+        super("Anagrama",gano);
         this.arrayOrdenado = new Array<any>();
         this.arrayOrdenado.push({'palabra':'ESCEPTICO','letras':['E','S','C','E','P','T','I','C','O']});
         this.arrayOrdenado.push({'palabra':'DRAMATURGIA','letras':['D','R','A','M','A','T','U','R','G','I','A']});

@@ -2,6 +2,7 @@ import { Juego } from '../clases/juego'
 import { Jugador } from './jugador';
 import { empty } from 'rxjs/observable/empty';
 import { forEach } from '@angular/router/src/utils/collection';
+import { Input } from '@angular/core';
 
 export class JuegoAdivina extends Juego {
     numeroSecreto: number = 0;
@@ -20,15 +21,15 @@ export class JuegoAdivina extends Juego {
     desubicado: number;
     incorrecto:number;
 
-    constructor(nombre?: string, gano?: boolean, jugador?:Jugador) {
-        super("Adivina el número",gano,jugador); 
+    constructor(nombre?: string, gano?: boolean) {
+        super("Adivina el número"); 
         this.contadorPistas = 0;
         this.contadorIntentos = 0;
         this.ingresados = new Array<any>();
         this.arriesga = new Array<number>();
       }
-      
-    public verificar() {
+
+public verificar() {
       this.contadorIntentos ++;
       this.ubicado = 0;
       this.desubicado = 0;

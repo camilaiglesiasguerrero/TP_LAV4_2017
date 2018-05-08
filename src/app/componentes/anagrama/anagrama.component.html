@@ -31,7 +31,7 @@
   
     <br>
 <div [hidden]='anagrama.gano'>
-  <input [(ngModel)]='anagrama.palabraResultado' [hidden]='seRindio' class='txt' style="width:50%" type="text">
+  <input [(ngModel)]='anagrama.palabraResultado' autofocus [hidden]='seRindio' (keydown)="keyDownFunction($event)"  class='txt' style="width:50%" type="text">
   <input [(ngModel)]='laPalabra' [hidden]='!seRindio' class='txt' readonly style="width:50%; background-color:firebrick" type="text">
   <i [hidden]='!seRindio' class="fa fa-times" style="color:red; font-size:36px"></i>
 </div>

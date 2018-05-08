@@ -3,8 +3,8 @@ import { Jugador } from "./jugador";
 import { forEach } from "@angular/router/src/utils/collection";
 
 export class JuegoTateti extends Juego{
-    constructor(nombre?: string, gano?: boolean, jugador?:Jugador) {
-        super("TaTeTi",gano,jugador);
+    constructor(nombre?: string, gano?: boolean) {
+        super("TaTeTi",gano);
         this.gano = false;
         this.grilla = new Array<any>();
         this.grilla.push({'celda':'0','valor':'','conValor':'false'});

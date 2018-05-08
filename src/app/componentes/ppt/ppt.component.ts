@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoPiedraPapelTijera } from '../../clases/juego-piedra-papel-tijera';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { RankingService } from '../../servicios/ranking.service';
 
 @Component({
   selector: 'app-ppt',
@@ -8,6 +9,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./ppt.component.css']
 })
 export class PptComponent implements OnInit {
+rankingS:RankingService;
 ppt : JuegoPiedraPapelTijera;
 display: boolean = false;
 cronometro: number;
@@ -34,14 +36,14 @@ enJuego: boolean = false;
 
 
   constructor(private route: ActivatedRoute,
-    private router: Router) { 
+    private router: Router, private servicioRanking: RankingService) { 
     this.ppt = new JuegoPiedraPapelTijera();
     this.cronometro = 5;
     this.contador = 0;
     this.jug = 0;
     this.maq = 0;
     this.k = 0;
-    
+    this.rankingS = servicioRanking;
   }
 
   ngOnInit() {
@@ -171,7 +173,9 @@ enJuego: boolean = false;
                   this.Comenzar();
                 else if(this.jug == 2)
                 {
+                  this.ppt.gano = true;
                   this.cartel = "¡Ganaste!";
+                  this.rankingS.GuardarDatos(this.ppt);
                   this.jug = 0;
                   this.maq = 0;
                   this.empiezaJuego = false;
@@ -181,7 +185,9 @@ enJuego: boolean = false;
                 }
                 else
                 { 
-                  this.cartel = "¡Perdiste!"
+                  this.cartel = "¡Perdiste!";
+                  this.ppt.gano = false;
+                  this.rankingS.GuardarDatos(this.ppt);
                   this.jug = 0;
                   this.maq = 0;
                   this.eleccion0 = false;

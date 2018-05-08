@@ -5,8 +5,8 @@ export class JuegoPiedraPapelTijera extends Juego{
   eleccion:number;
   eleccionMaq : number;
 
-    constructor(nombre?: string, gano?: boolean, jugador?:Jugador) {
-        super("Piedra Papel o Tijera",gano,jugador);
+    constructor(nombre?: string, gano?: boolean) {
+        super("Piedra Papel o Tijera",gano);
         this.eleccion = 0;
       }
     

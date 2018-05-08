@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PaisesService } from '../../servicios/paises.service';
+import { JugadoresService } from '../../servicios/jugadores.service';
+import { Jugador } from '../../clases/jugador';
 
 @Component({
   selector: 'app-uso-servicios',
@@ -9,27 +10,29 @@ import { PaisesService } from '../../servicios/paises.service';
 export class UsoServiciosComponent implements OnInit {
   paises : any; 
   cual: any;
-  constructor(private servPais : PaisesService) { 
-    
+  jugador: Jugador;
+  constructor(private jugadorServ : JugadoresService) { 
+    this.jugador = new Jugador();
   }
 
   ngOnInit() {
   }
-
+/*
   traerTodos(){
-    var respuesta =  this.servPais.listarTodos().then(datos=>{
-      //console.info("listado de paises",datos);
+    var respuesta =  this.jugadorServ.traertodos().then(datos=>{
+      //console.info("listado",datos);
       
       this.paises= datos;
     });    
   }
-
-  traerUno(cual:string){
-    var respuesta =  this.servPais.listarUno(cual).then(datos=>{
+*/
+  traerUno(){
+      var respuesta =  this.jugadorServ.traerJugador("'example@example.com'").then(datos=>{
       //console.info("listado de paises",datos);
       
+      
       this.paises= datos;
-    }); 
+    });
   }
 
 }

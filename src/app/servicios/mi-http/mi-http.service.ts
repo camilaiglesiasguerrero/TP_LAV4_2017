@@ -11,7 +11,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class MiHttpService {
 
-  url: string = "https://restcountries.eu/rest/v2/";
+  //url: string = "https://localhost:8080.com/Api/";
+  url: string = "http://localhost:8080/jugadoresarchivo/apirestjugadores/Jugadas/";
 
   constructor( public http: Http ) { }
 
@@ -34,9 +35,9 @@ export class MiHttpService {
     });
   }
 
-  public httpGetO ( url: string): Observable<Response>
+  public httpGetO (): Observable<Response>
   {
-    return this.http.get( url )
+    return this.http.get( this.url )
       .map( ( res: Response ) => res.json())
       .catch( ( err: any ) => Observable.throw(err.json().error || 'Server error'));
   }

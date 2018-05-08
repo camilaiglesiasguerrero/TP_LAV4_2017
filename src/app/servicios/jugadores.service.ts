@@ -1,23 +1,26 @@
 import { Injectable } from '@angular/core';
-import { ArchivosJugadoresService}from './archivos-jugadores.service'
+//import { ArchivosJugadoresService}from './archivos-jugadores.service'
+import { MiHttpService } from './mi-http/mi-http.service'; 
+
 @Injectable()
 export class JugadoresService {
 
   //peticion:any;
-  constructor( public miHttp: ArchivosJugadoresService ) {
+  constructor( public miHttp: MiHttpService  ) {
+    
    // this.peticion = this.miHttp.traerJugadores();
 //    this.peticion = this.miHttp.httpGetO("https://restcountries.eu/rest/v2/all");
   }
 
 
 filtrado:any;
-
-  traertodos(ruta : string,filtro: string) 
+/*
+  traertodos() 
   {
-    return this.miHttp.traerJugadores(ruta).then(data=>{
+    return this.miHttp.httpGetO().then(data=>{
       console.info("jugadores service",data);
 
-      this.filtrado=data;
+      return data;
 
      let  ganador: boolean;
       if(filtro=="ganadores")
@@ -34,12 +37,20 @@ filtrado:any;
       )
       .catch(errror=>{console.log("error")
       
-
-
     return this.filtrado;
-      
+    });
+  }
+*/
+  traerJugador(param) 
+  {
+    console.log("estoy en traer del servicio");
+    return this.miHttp.httpGetP(param).then(data=>{
+      console.info("jugadores service",data);
 
+      this.filtrado=data;
+      return data;
     });
   }
 
+ 
 }

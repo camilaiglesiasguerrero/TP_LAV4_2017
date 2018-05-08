@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { JugadoresService } from '../../servicios/jugadores.service';
+import { JuegoServiceService } from '../../servicios/juego-service.service';
+
 @Component({
   selector: 'app-jugadores-listado',
   templateUrl: './jugadores-listado.component.html',
@@ -8,28 +9,27 @@ import { JugadoresService } from '../../servicios/jugadores.service';
 export class JugadoresListadoComponent implements OnInit {
 
   listado:any
-  miJugadoresServicio:JugadoresService
+  miJugadoresServicio:JuegoServiceService
   
-    constructor(serviceJugadores:JugadoresService) {
-      this.miJugadoresServicio = serviceJugadores;
+    constructor(serviceJugadores:JuegoServiceService) {
+      console.log(serviceJugadores.listar());
       
     }
     
-
-
   ngOnInit() {
   }
 
 
   TraerTodos(){
-    //alert("totos");
-    this.miJugadoresServicio.traertodos('jugadores/','todos').then(data=>{
-      //console.info("jugadores listado",(data));
-      this.listado= data;
+    console.log("estoy en el traer todos los juegos del jugador del componente");
+    console.log(this.miJugadoresServicio.listar());
+    /*this.serviceJugadores.traerJugador("'example@examplo.com'").then(data=>{
+      console.info("jugadores listado",(data));
+      //this.listado= data;
 
-    })
+    })*/
   }
-  TraerGanadores(){
+  /*TraerGanadores(){
     this.miJugadoresServicio.traertodos('jugadores/','ganadores').then(data=>{
       //console.info("jugadores listado",(data));
       this.listado= data;
@@ -43,5 +43,5 @@ export class JugadoresListadoComponent implements OnInit {
 
     })
   }
-
+*/
 }

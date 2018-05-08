@@ -17,14 +17,9 @@ export class Jugador {
     }
     
     
-    private _jugadas : Array<any>;
-    public get jugadas() : Array<any> {
-        return this._jugadas;
+    constructor() {
+                
     }
-    public set jugadas(v : Array<any>) {
-        this._jugadas = v;
-    }
-    
 
     public Guardar()
     {
@@ -49,4 +44,6 @@ export class Jugador {
     {
         localStorage.clear();   
     }
+
+ 
 }

@@ -79,8 +79,11 @@ export class JuegoAdivina extends Juego {
 
      public generarnumero() {
       while(this.ingresados.length > 0)
+      {
         this.ingresados.pop();
-      
+        console.log(this.ingresados);
+      }
+      this.contadorIntentos = 0;
       this.numeroIngresado = 0;
       this.num1 = Math.floor((Math.random() * 10));
       this.num2 = Math.floor((Math.random() * 10));

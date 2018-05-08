@@ -12,7 +12,15 @@
 .fa:hover {
     opacity: 0.7;
 }
-
+.titulo{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'beyond_the_mountains';
+    font-weight: bold;
+    font-size: 56px;
+    text-align: center;
+  }
+  
 /* Set a specific color for each brand */
 
 /* Facebook */
